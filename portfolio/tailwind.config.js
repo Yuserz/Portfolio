@@ -3,17 +3,11 @@ export default {
   content: ["./src/**/*.{html,js,ts,tsx}"],
   theme: {
     screens: {
-      sm: { min: "480px", max: "639px" },
-      // => @media (min-width: 640px and max-width: 767px) { ... }
-
-      md: { min: "640px", max: "719px" },
-      // => @media (min-width: 768px and max-width: 1023px) { ... }
-
-      lg: { min: "720px", max: "1079px" },
-      // => @media (min-width: 1024px and max-width: 1279px) { ... }
-
-      xl: { min: "1080px" },
-      // => @media (min-width: 1280px and max-width: 1535px) { ... }
+      xs: { max: "320px" },
+      sm: { min: "321px", max: "600px" },
+      md: { min: "601px", max: "900px" },
+      lg: { min: "901px", max: "1200px" },
+      xl: { min: "1201px" },
     },
     colors: {
       primary: "#5D5FEF",
@@ -24,6 +18,13 @@ export default {
       warning: "#ffc107",
       info: "#0dcaf0",
       light: "#f8f9fa",
+    },
+    fontSize: {
+      h1: "60px",
+      h2: "35px",
+      h3: "20px",
+      btn: "16px",
+      caption: "14px",
     },
   },
   plugins: [],

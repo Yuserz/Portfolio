@@ -7,9 +7,11 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="w-full">
+    <div className="layout">
       <Header />
-      {children}
+      <div className="w-full justify-center items-center sm:px-4 md:px-10 lg:px-20 xl:px-40">
+        {children}
+      </div>
     </div>
   );
 };
