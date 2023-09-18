@@ -4,7 +4,7 @@ import icon from "../assets/icons/download.svg";
 export default function header() {
   return (
     <header className="header">
-      <button className="flex items-center shadow gap-2 pl-6 p-2 bg-gradient-to-r from-primary to-[#AC00B0] text-white-0 px-4 rounded-3xl">
+      <button className="resume-btn">
         Resume <img src={icon} />
       </button>
       <nav>
