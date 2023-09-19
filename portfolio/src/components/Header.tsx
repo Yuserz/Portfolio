@@ -1,22 +1,49 @@
-import * as React from "react";
+import { Link } from "react-scroll";
 import icon from "../assets/icons/download.svg";
 
-export default function header() {
+export default function Header() {
   return (
     <header className="header">
       <button className="resume-btn">
         Resume <img src={icon} />
       </button>
       <nav>
-        <ul className="flex gap-4 whitespace-nowrap xs:text-[10px] sm:text-[14px] font-medium  text-primary">
-          <li id="1" className="">
-            Home
+        <ul className="flex cursor-pointer gap-4 whitespace-nowrap xs:text-[10px] sm:text-[14px] font-medium  text-primary">
+          <li className="">
+            <Link
+              activeClass="active"
+              to="section1"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              Home
+            </Link>
           </li>
-          <li id="2" className="">
-            Tect Stack
+          <li className="">
+            <Link
+              activeClass="active"
+              to="section2"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              Tech Stack
+            </Link>
           </li>
-          <li id="3" className="">
-            Project
+          <li className="">
+            <Link
+              activeClass="active"
+              to="section3"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              Project
+            </Link>
           </li>
         </ul>
       </nav>
