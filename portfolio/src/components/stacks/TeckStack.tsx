@@ -9,7 +9,7 @@ interface TechStackProps {
 const TechStack: React.FC<TechStackProps> = ({ image, title, caption }) => {
   return (
     <div className="card">
-      <div className="flex gap-4 w-full xs:justify-center sm:justify-center">
+      <div className="card-content">
         <img className="card-image p-1" src={image} />
         <div className="self-start">
           <h3 className="stack-title font-medium ">{title}</h3>

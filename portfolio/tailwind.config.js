@@ -4,10 +4,10 @@ export default {
   theme: {
     screens: {
       xs: { max: "320px" },
-      sm: { min: "321px", max: "600px" },
-      md: { min: "601px", max: "900px" },
-      lg: { min: "901px", max: "1200px" },
-      xl: { min: "1201px" },
+      sm: { min: "321px", max: "480px" },
+      md: { min: "481px", max: "900px" },
+      lg: { min: "901px", max: "1400px" },
+      xl: { min: "1401px" },
     },
     colors: {
       primary: "#5D5FEF",
