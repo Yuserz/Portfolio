@@ -3,9 +3,9 @@ export default {
   content: ["./src/**/*.{html,js,ts,tsx}"],
   theme: {
     screens: {
-      xs: { max: "320px" },
-      sm: { min: "321px", max: "480px" },
-      md: { min: "481px", max: "900px" },
+      xs: { min: "0", max: "320px" },
+      sm: { min: "321px", max: "640px" },
+      md: { min: "641px", max: "900px" },
       lg: { min: "901px", max: "1400px" },
       xl: { min: "1401px" },
     },
@@ -23,6 +23,7 @@ export default {
       h1: "60px",
       h2: "35px",
       h3: "20px",
+      h4: "18px",
       btn: "16px",
       caption: "14px",
     },
