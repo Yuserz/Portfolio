@@ -96,10 +96,10 @@ const Projects: React.FC = () => {
                 </div>
               ))}
             </div>
-            <caption className="flex text-caption text-start text-dark-1">
+            <div className="flex text-caption text-dark-1 mt-2">
               A webrtc app that ables the user to communicate. Talk and message
               all you want with this app.
-            </caption>
+            </div>
           </div>
         </div>
       ))}

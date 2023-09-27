@@ -18,7 +18,7 @@ export default function Left() {
         Let’s code the future together!
       </div>
       <div className="contact-container flex items-center sm:self-center">
-        <button className="contact-btn text-[16px]">
+        <button className="contact-btn text-[16px] hover:scale-110 transition-all duration-200">
           Get in touch <img className="w-8 h-4 mt-[2px]" src={icon} />
         </button>
       </div>
