@@ -63,6 +63,13 @@ const options: Option[] = [
     icon: icons.react,
     caption: "Combines the best parts of native development with React.",
   },
+  {
+    id: 10,
+    title: "Less",
+    icon: icons.less,
+    caption:
+      "Less (which stands for Leaner Style Sheets) is a backwards-compatible language extension for CSS.",
+  },
 ];
 
 const TechStack: React.FC = () => {

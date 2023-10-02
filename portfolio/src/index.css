@@ -204,18 +204,14 @@ text-white-0
   lg:p-6
   xl:p-6
   rounded-md
-  sm:flex-wrap
-  md:flex-wrap
-  lg:flex-wrap
-  min-w-fit;
+  flex-wrap
+  min-w-fit
+  justify-stretch;
   box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
-}
-.project-left {
-  @apply flex sm:w-full md:w-full;
 }
 
 .project-img {
-  @apply w-[200px] min-h-[150px] h-auto sm:w-full md:w-full;
+  @apply w-full object-fill h-auto max-h-[350px] sm:w-full md:w-full;
 }
 
 .tech-icon {

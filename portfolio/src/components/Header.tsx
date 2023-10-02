@@ -74,7 +74,7 @@ export default function Header() {
               duration={500}
               onClick={() => handleOnClick("section2")}
             >
-              Tech Stack
+              Project
             </LinkScroll>
           </li>
           <li
@@ -93,7 +93,7 @@ export default function Header() {
               duration={500}
               onClick={() => handleOnClick("section3")}
             >
-              Project
+              Tech Stack
             </LinkScroll>
           </li>
         </ul>

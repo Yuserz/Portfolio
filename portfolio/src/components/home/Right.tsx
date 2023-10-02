@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import profile from "../../assets/images/profile.svg";
 
 export default function Right() {

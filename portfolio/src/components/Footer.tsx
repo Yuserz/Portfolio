@@ -1,9 +1,6 @@
-import React from "react";
 import * as icons from "../assets/icons";
 
-type Props = {};
-
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <footer className="flex flex-col gap-4  mt-10 w-full h-[130px] bg-white-0 items-center justify-center">
       <div className="flex flex-row gap-4 ">

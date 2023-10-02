@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import icon from "../../assets/icons/arrow.svg";
 
 export default function Left() {
