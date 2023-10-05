@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 //icon
 import * as icons from "../../assets/icons";
 //images
@@ -28,8 +29,8 @@ const Projects: React.FC = () => {
         4: icons.tailwind2,
       },
       caption:
-        "Finger Nail Disease Detection is a standalone application that will detect the early stage of systemic disease using the color, shape, and texture of the fingernails in our hands.",
-      link: "",
+        "A college thesis which detects an early stage of systemic disease using image classification.",
+      link: "https://github.com/Yuserz/nail_detection",
     },
     {
       id: 2,
@@ -41,9 +42,8 @@ const Projects: React.FC = () => {
         3: icons.mongodb2,
         4: icons.tailwind2,
       },
-      caption:
-        "A webrtc app that ables the user to communicate via chat and live call.",
-      link: "",
+      caption: "A web real time communication app that uses socket.io and .",
+      link: "https://github.com/Yuserz/LingoLink",
     },
 
     {
@@ -55,12 +55,12 @@ const Projects: React.FC = () => {
         1: icons.tensor,
       },
       caption:
-        "A react native mobile app with expo cli that determines the ripeness of a banana by uploading or capturing an image.",
-      link: "",
+        "A react native mobile app which determines the ripeness of a banana using neural network.",
+      link: "https://github.com/Yuserz/banana-ripeness",
     },
     {
       id: 4,
-      name: "Chakra Admin - Frontend",
+      name: "Chakra",
       image: images.chakra,
       icons: {
         0: icons.react2,
@@ -69,8 +69,8 @@ const Projects: React.FC = () => {
         3: icons.less2,
       },
       caption:
-        "Chakra admin is a frontend only project that test my ability to convert beautiful Figma design to a semi responsive frontend code.",
-      link: "",
+        "Chakra admin is a frontend project I basically convert Figma design to a semi responsive frontend code.",
+      link: "https://github.com/Yuserz/Chakra-Admin",
     },
   ];
 
@@ -85,17 +85,26 @@ const Projects: React.FC = () => {
           />
 
           <div className="project-right flex flex-col gap-2">
-            <label className="flex text-h4 font-bold text-dark-1">
+            <label className="flex text-h4 font-[700] text-dark-1 xl:text-[25px]">
               {item.name}
             </label>
-            <div className="icon-container flex flex-row flex-wrap gap-1">
-              {Object.keys(item.icons).map((key: string) => (
-                <div key={key} className="bg-white-0">
-                  <img className="tech-icon" src={item.icons[Number(key)]} />
-                </div>
-              ))}
+            <div className="flex flex-row justify-between">
+              <div className="icon-container flex flex-row flex-wrap gap-1">
+                {Object.keys(item.icons).map((key: string) => (
+                  <div key={key} className="bg-white-0">
+                    <img className="tech-icon" src={item.icons[Number(key)]} />
+                  </div>
+                ))}
+              </div>
+              <Link
+                to={item.link}
+                target="_blank"
+                className="p-2 bg-primary rounded-full text-white-0"
+              >
+                Go
+              </Link>
             </div>
-            <div className="flex text-caption text-dark-1 mt-2">
+            <div className="flex text-caption text-dark-2 mt-2 lg:text-h4 text-caption1 xl:text-caption2">
               {item.caption}
             </div>
           </div>

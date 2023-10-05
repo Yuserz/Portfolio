@@ -15,7 +15,7 @@ const Home: React.FC = () => {
         <div className="left home-sub-containers gap-4 z-10 ">
           <Left />
         </div>
-        <div className="right home-sub-containers ">
+        <div className="right home-sub-containers">
           <Right />
         </div>
       </div>

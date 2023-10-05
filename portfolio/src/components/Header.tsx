@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link as LinkScroll } from "react-scroll";
 import icon from "../assets/icons/download.svg";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const [active, setActive] = useState("section1");
@@ -12,22 +13,25 @@ export default function Header() {
     setActive(section);
   };
 
-  const handleScroll = () => {
-    const currentScrollPos = window.scrollY;
-    setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 20);
-    setPrevScrollPos(currentScrollPos);
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 20);
+      setPrevScrollPos(currentScrollPos);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, visible]);
+  }, [prevScrollPos]);
 
   return (
-    <header
-      className={`header select-none transition-all duration-300 ${
+    <motion.header
+      className={`header select-none transition-all duration-300  ${
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: -0.4, type: "spring", stiffness: 120 }}
     >
       <Link
         to="https://drive.google.com/file/d/1PDQRAw8B_8ZKf5N7DPXgqFNuy4FSDNVE/view?usp=drive_LinkScroll"
@@ -38,7 +42,7 @@ export default function Header() {
         Resume <img src={icon} />
       </Link>
       <nav>
-        <ul className="flex cursor-pointer  items-center xs:gap-2 sm:gap-2 gap-4 whitespace-nowrap xs:text-[10px] sm:text-[14px] font-medium  text-primary">
+        <ul className="flex cursor-pointer items-center xs:gap-2 sm:gap-2 gap-4 whitespace-nowrap xs:text-[10px] sm:text-[14px] font-medium text-primary">
           <li
             className={
               active === "section1"
@@ -98,6 +102,6 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-    </header>
+    </motion.header>
   );
 }

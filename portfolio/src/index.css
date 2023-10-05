@@ -31,9 +31,11 @@ bg-white-0
   lg:py-[40px]
   xl:py-[40px]
   w-full
-  justify-between
-  md:grid-cols-1
-  lg:grid-cols-2;
+  lg:h-screen
+  xl:h-screen
+  lg:mt-[-60px]
+  xl:mt-[-60px]
+  justify-between;
 }
 .header {
   @apply flex w-full 
@@ -45,7 +47,7 @@ bg-white-0
   lg:px-20 
   xl:px-40 
   overflow-hidden 
-  shadow-md 
+  
   py-4 
   justify-between
   sticky
@@ -58,15 +60,15 @@ bg-white-0
 }
 
 .caption {
-  @apply flex md:text-start lg:text-start xl:text-start text-dark-1;
+  @apply flex xs:self-center sm:self-center md:text-start lg:text-start xl:text-start text-dark-2 xl:text-h3;
 }
 
 .my-name {
-  @apply text-dark-0 font-bold text-h2 sm:text-h2 md:text-h2 lg:text-h1 xl:text-h1;
+  @apply text-dark-0 font-bold text-h2 sm:text-h2 md:text-h2 lg:text-h1 xl:text-h;
 }
 
 .title {
-  @apply text-primary text-h3 sm:text-[25px] md:text-[25px] lg:text-h2 xl:text-h2;
+  @apply text-primary text-h3 sm:text-[25px] md:text-[25px] lg:text-h2 xl:text-h1 xl:mt-[-30px];
 }
 
 .resume-btn {
@@ -191,7 +193,8 @@ text-white-0
   xs:grid-cols-1
   sm:grid-cols-1
   md:grid-cols-2
-  gap-4;
+  gap-4
+  xl:gap-8;
 }
 
 .project-card {
@@ -211,7 +214,7 @@ text-white-0
 }
 
 .project-img {
-  @apply w-full object-fill h-auto max-h-[350px] sm:w-full md:w-full;
+  @apply w-full object-fill h-auto max-h-[250px] sm:w-full md:w-full;
 }
 
 .tech-icon {

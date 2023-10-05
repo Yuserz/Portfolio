@@ -83,7 +83,7 @@ const TechStack: React.FC = () => {
               <h3 className="stack-title text-h4 font-medium text-dark-1">
                 {option.title}
               </h3>
-              <div className="caption text-caption text-dark-1">
+              <div className="text-caption1 xl:text-caption2 text-dark-2 op">
                 {option.caption}
               </div>
             </div>
