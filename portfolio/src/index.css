@@ -10,8 +10,8 @@
 .layout {
   @apply w-full
   h-auto
-bg-white-0
-/* bg-[#161525] */;
+/* bg-white-0 */
+bg-[#161525];
 }
 .section-container {
   @apply w-full
@@ -47,12 +47,14 @@ bg-white-0
   lg:px-20 
   xl:px-40 
   overflow-hidden 
-  
+
   py-4 
   justify-between
   sticky
   top-0
-  bg-white-0 z-30;
+  bg-[#161525]
+  /* bg-white-0 */
+  z-30;
 }
 
 .home-sub-containers {
@@ -64,7 +66,7 @@ bg-white-0
 }
 
 .my-name {
-  @apply text-dark-0 font-bold text-h2 sm:text-h2 md:text-h2 lg:text-h1 xl:text-h;
+  @apply text-white-1 font-bold text-h2 sm:text-h2 md:text-h2 lg:text-h1 xl:text-h;
 }
 
 .title {
@@ -92,7 +94,7 @@ bg-white-0
 .contact-btn {
   @apply flex
   items-center
-  mt-4 shadow
+  shadow
   gap-2
   pl-6
   p-3
@@ -100,9 +102,18 @@ bg-white-0
 from-primary
 to-[#8384E8]
 text-white-0
-  px-2 rounded-xl;
+  px-2 rounded-xl
+  text-btn
+  lg:text-h3
+  xl:text-h3
+  hover:scale-110
+  transition-all
+  duration-200;
 }
 
+.contact-container {
+  @apply gap-4 flex items-center sm:self-center mt-4;
+}
 .stack-container {
   @apply flex 
   flex-col 
@@ -149,7 +160,8 @@ text-white-0
   flex-row
   w-full
   gap-2
-  bg-white-0
+  bg-[#A5A6F6] 
+  bg-opacity-10
   p-4
   lg:px-6
   xl:px-8
@@ -198,35 +210,38 @@ text-white-0
 }
 
 .project-card {
-  @apply bg-white-0
+  @apply bg-[#A5A6F6]
+  bg-opacity-10
   flex
-  flex-row
+  flex-col
   gap-2
   p-4
   md:p-6
   lg:p-6
   xl:p-6
-  rounded-md
+  rounded-lg
   flex-wrap
-  min-w-fit
-  justify-stretch;
+  min-w-fit;
   box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
 }
 
 .project-img {
-  @apply w-full object-fill h-auto max-h-[250px] sm:w-full md:w-full;
+  @apply w-full object-fill h-fit max-h-[350px] sm:w-full md:w-full rounded-md mb-2
+  bg-bg bg-opacity-40 opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300;
 }
 
 .tech-icon {
   @apply shadow
   rounded-full
   overflow-clip
-  min-w-[20px]
-  max-w-[28px]
-  h-auto
-bg-white-0;
+  min-w-[30px]
+  max-w-[40px]
+  h-auto;
 }
 
 .footer-icon {
-  @apply opacity-70 hover:opacity-100 cursor-pointer hover:scale-110 transition-all duration-200;
+  @apply cursor-pointer
+  hover:scale-110
+  transition-all
+  duration-200;
 }

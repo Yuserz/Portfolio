@@ -67,8 +67,7 @@ const options: Option[] = [
     id: 10,
     title: "Less",
     icon: icons.less,
-    caption:
-      "Less (which stands for Leaner Style Sheets) is a backwards-compatible language extension for CSS.",
+    caption: "Less is a backwards-compatible language extension for CSS.",
   },
 ];
 
@@ -80,7 +79,7 @@ const TechStack: React.FC = () => {
           <div className="card-content">
             <img className="card-image p-1" src={option.icon} />
             <div className="self-start">
-              <h3 className="stack-title text-h4 font-medium text-dark-1">
+              <h3 className="stack-title text-h4 font-medium text-white-2">
                 {option.title}
               </h3>
               <div className="text-caption1 xl:text-caption2 text-dark-2 op">

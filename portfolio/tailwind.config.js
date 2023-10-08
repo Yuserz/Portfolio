@@ -18,6 +18,7 @@ export default {
       warning: "#ffc107",
       info: "#0dcaf0",
       light: "#f8f9fa",
+      bg: "#161525",
     },
     fontSize: {
       h: "80px",

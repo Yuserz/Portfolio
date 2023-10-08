@@ -29,7 +29,7 @@ export default function Header() {
       className={`header select-none transition-all duration-300  ${
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: -150, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: -0.4, type: "spring", stiffness: 120 }}
     >

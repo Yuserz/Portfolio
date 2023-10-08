@@ -15,7 +15,13 @@ export { default as tailwind2 } from "../icons/tailwind2.png";
 export { default as firebase2 } from "../icons/firebase2.png";
 export { default as tensor } from "../icons/tensor.png";
 export { default as less2 } from "../icons/less2.png";
+export { default as flask } from "../icons/flask.png";
+export { default as python } from "../icons/python.png";
+export { default as sass } from "../icons/sass.png";
 
 export { default as github } from "../icons/github.svg";
 export { default as facebook } from "../icons/facebook.svg";
 export { default as linkedin } from "../icons/linkedin.svg";
+export { default as twitter } from "../icons/twit.svg";
+
+export { default as arrow } from "../icons/arrow.svg";

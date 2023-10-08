@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import icon from "../../assets/icons/arrow.svg";
+//icon
+import * as icons from "../../assets/icons";
 
 const container = {
   hidden: { opacity: 0 },
@@ -16,6 +18,13 @@ const item = {
   hidden: { x: -100, opacity: 0 },
   show: { x: 0, opacity: 1 },
 };
+
+const socialArray = [
+  { id: 1, icon: icons.github, path: "" },
+  { id: 2, icon: icons.facebook, path: "" },
+  { id: 3, icon: icons.twitter, path: "" },
+  { id: 4, icon: icons.linkedin, path: "" },
+];
 
 export default function Left() {
   return (
@@ -45,13 +54,19 @@ export default function Left() {
       <motion.p className="caption font-semibold" variants={item}>
         Let’s code the future together!
       </motion.p>
-      <motion.div
-        className="contact-container flex items-center sm:self-center"
-        variants={item}
-      >
-        <button className="contact-btn text-btn lg:text-h3 xl:text-h3 hover:scale-110 transition-all duration-200">
+      <motion.div className="contact-container " variants={item}>
+        <button className="contact-btn">
           Get in touch <img className="w-8 h-4 mt-[2px]" src={icon} />
         </button>
+        <motion.div className="flex gap-2">
+          {socialArray.map((item) => (
+            <img
+              key={item.id}
+              className="w-10 h-10 rounded-full opacity-90 hover:opacity-100 hover:scale-125 transition-all duration-300 cursor-pointer"
+              src={item.icon}
+            />
+          ))}
+        </motion.div>
       </motion.div>
     </motion.div>
   );
