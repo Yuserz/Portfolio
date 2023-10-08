@@ -41,6 +41,7 @@ export default function Header() {
       >
         Resume <img src={icon} />
       </Link>
+
       <nav>
         <ul className="flex cursor-pointer items-center xs:gap-2 sm:gap-2 gap-4 whitespace-nowrap xs:text-[10px] sm:text-[14px] font-medium text-primary">
           <li

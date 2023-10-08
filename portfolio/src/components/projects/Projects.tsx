@@ -5,6 +5,9 @@ import * as icons from "../../assets/icons";
 //images
 import * as images from "../../assets/images";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect, useState } from "react";
+
 interface Project {
   id: number;
   name: string;
@@ -60,7 +63,7 @@ const Projects: React.FC = () => {
       },
       icon2: icons.arrow,
       caption:
-        "A react native mobile app which determines the ripeness of a banana using neural network.",
+        "A react native mobile app which classifies the ripeness of a banana using neural network.",
       link: "https://github.com/Yuserz/banana-ripeness",
     },
     {
@@ -75,7 +78,7 @@ const Projects: React.FC = () => {
       },
       icon2: icons.arrow,
       caption:
-        "Chakra admin is a frontend project I convert from Figma design to a semi responsive frontend code.",
+        "Chakra is a Dashboard frontend project I convert from Figma design to a semi responsive frontend code.",
       link: "https://github.com/Yuserz/Chakra-Admin",
     },
   ];
@@ -86,26 +89,37 @@ const Projects: React.FC = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        delayChildren: 1,
+        delayChildren: 0.4,
         staggerChildren: 0.2,
       },
     },
   };
 
   const items = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 10, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
     },
   };
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    rootMargin: "300px 100px",
+  });
+
+  const [animation, setAnimation] = useState("hidden");
+
+  useEffect(() => {
+    setAnimation(inView ? "visible" : "hidden");
+  }, [inView]);
 
   return (
     <motion.div
       className="project-container"
       variants={container}
       initial="hidden"
-      animate="visible"
+      animate={animation}
+      ref={ref}
     >
       {myArray.map((item) => (
         <motion.div key={item.id} className="project-card" variants={items}>

@@ -1,6 +1,5 @@
 import * as React from "react";
 import MainLayout from "../layouts/MainLayout";
-
 import Left from "../components/home/Left";
 import Right from "../components/home/Right";
 import TechStack from "../components/stacks/TeckStack";
@@ -25,9 +24,7 @@ const Home: React.FC = () => {
       </div>
       <div id="section3" className="stack-container">
         <h3 className="section-title">Teck Stack</h3>
-        <div className="tect-stack-container">
-          <TechStack />
-        </div>
+        <TechStack />
       </div>
     </MainLayout>
   );

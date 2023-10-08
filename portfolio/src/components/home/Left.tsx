@@ -55,14 +55,14 @@ export default function Left() {
         Let’s code the future together!
       </motion.p>
       <motion.div className="contact-container " variants={item}>
-        <button className="contact-btn">
+        <button className="contact-btn whitespace-nowrap">
           Get in touch <img className="w-8 h-4 mt-[2px]" src={icon} />
         </button>
         <motion.div className="flex gap-2">
           {socialArray.map((item) => (
             <img
               key={item.id}
-              className="w-10 h-10 rounded-full opacity-90 hover:opacity-100 hover:scale-125 transition-all duration-300 cursor-pointer"
+              className="max-w-10 max-h-10 w-full rounded-full opacity-90 hover:opacity-100 hover:scale-125 transition-all duration-300 cursor-pointer"
               src={item.icon}
             />
           ))}

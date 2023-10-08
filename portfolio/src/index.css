@@ -11,7 +11,7 @@
   @apply w-full
   h-auto
 /* bg-white-0 */
-bg-[#161525];
+bg-bg;
 }
 .section-container {
   @apply w-full
@@ -28,7 +28,7 @@ bg-[#161525];
   @apply flex
   flex-wrap-reverse
   items-center
-  lg:py-[40px]
+  lg:py-[20px]
   xl:py-[40px]
   w-full
   lg:h-screen
@@ -47,13 +47,11 @@ bg-[#161525];
   lg:px-20 
   xl:px-40 
   overflow-hidden 
-
   py-4 
   justify-between
   sticky
   top-0
-  bg-[#161525]
-  /* bg-white-0 */
+  bg-bg
   z-30;
 }
 
@@ -70,7 +68,7 @@ bg-[#161525];
 }
 
 .title {
-  @apply text-primary text-h3 sm:text-[25px] md:text-[25px] lg:text-h2 xl:text-h1 xl:mt-[-30px];
+  @apply text-primary text-h3 sm:text-[25px] md:text-[25px] lg:text-h2 xl:text-h1 md:mt-[-20px] lg:mt-[-20px] xl:mt-[-30px];
 }
 
 .resume-btn {
@@ -84,7 +82,7 @@ bg-[#161525];
   p-2
   bg-gradient-to-r
   from-primary
-  to-[#AC00B0]
+  to-[#b83effc2]
   text-white-0
   px-4
   rounded-3xl
@@ -100,7 +98,7 @@ bg-[#161525];
   p-3
   bg-gradient-to-r
 from-primary
-to-[#8384E8]
+to-[#b83eff82]
 text-white-0
   px-2 rounded-xl
   text-btn
@@ -227,7 +225,7 @@ text-white-0
 
 .project-img {
   @apply w-full object-fill h-fit max-h-[350px] sm:w-full md:w-full rounded-md mb-2
-  bg-bg bg-opacity-40 opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300;
+  bg-bg p-4 bg-opacity-40 opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300;
 }
 
 .tech-icon {
