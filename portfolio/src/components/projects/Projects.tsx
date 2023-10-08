@@ -119,7 +119,6 @@ const Projects: React.FC = () => {
       variants={container}
       initial="hidden"
       animate={animation}
-      ref={ref}
     >
       {myArray.map((item) => (
         <motion.div key={item.id} className="project-card" variants={items}>
@@ -127,6 +126,7 @@ const Projects: React.FC = () => {
             src={item.image}
             className="project-img
             "
+            ref={ref}
           />
 
           <div className="project-right w-full gap-4 xl:gap-4 flex flex-col justify-start ">

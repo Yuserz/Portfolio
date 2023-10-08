@@ -55,9 +55,17 @@ export default function Left() {
         Let’s code the future together!
       </motion.p>
       <motion.div className="contact-container " variants={item}>
-        <button className="contact-btn whitespace-nowrap">
+        <button
+          className="contact-btn whitespace-nowrap"
+          onClick={() => {
+            const email = "yusri.cs200@gmail.com";
+            const url = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${email}&tf=1`;
+            window.open(url, "_blank");
+          }}
+        >
           Get in touch <img className="w-8 h-4 mt-[2px]" src={icon} />
         </button>
+
         <motion.div className="flex gap-2">
           {socialArray.map((item) => (
             <img
