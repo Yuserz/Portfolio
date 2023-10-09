@@ -13,13 +13,13 @@ const bounceTransition = {
 export default function Right() {
   return (
     <motion.div
-      initial={{ scale: 0 }}
-      animate={{ rotate: 360, scale: 1 }}
+      initial={{ scale: 0.5, opacity: 0 }}
+      animate={{ opacity: 1, rotate: 360, scale: 1 }}
       transition={{
         delay: 0.8,
         type: "spring",
-        stiffness: 200,
-        damping: 15,
+        stiffness: 260,
+        damping: 20,
       }}
     >
       <div className="flex w-fit justify-end xs:justify-center sm:justify-center  overflow-visible">

@@ -16,7 +16,7 @@ const Header: React.FC = () => {
       className="header select-none transition-all duration-300"
       initial={{ y: -150, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 3, delay: -0.4, type: "spring", stiffness: 120 }}
+      transition={{ delay: 1, type: "tween", stiffness: 100 }}
     >
       <Link
         to="https://drive.google.com/file/d/1PDQRAw8B_8ZKf5N7DPXgqFNuy4FSDNVE/view?usp=drive_LinkScroll"
