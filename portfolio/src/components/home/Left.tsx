@@ -7,8 +7,8 @@ const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-
     transition: {
+      delayChildren: window.innerWidth <= 640 ? 1.5 : 0,
       staggerChildren: 0.1,
     },
   },
@@ -74,7 +74,7 @@ export default function Left() {
           Get in touch <img className="w-8 h-4 mt-[2px]" src={icon} />
         </button>
 
-        <motion.div className="flex gap-2">
+        <motion.div className="flex gap-2 xs:mt-2 sm:mt-2">
           {socialArray.map((item) => (
             <button
               onClick={() => {

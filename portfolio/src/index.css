@@ -68,7 +68,7 @@ bg-bg;
 }
 
 .title {
-  @apply text-primary text-h3 sm:text-[25px] md:text-[25px] lg:text-h2 xl:text-h1 md:mt-[-20px] lg:mt-[-20px] xl:mt-[-30px];
+  @apply text-primary text-h3 sm:text-[25px] md:text-[25px] lg:text-h2 xl:text-h1 xs:mt-[-15px] sm:mt-[-15px] md:mt-[-20px] lg:mt-[-20px] xl:mt-[-30px];
 }
 
 .resume-btn {
@@ -110,7 +110,7 @@ text-white-0
 }
 
 .contact-container {
-  @apply gap-4 flex items-center sm:self-center mt-4;
+  @apply gap-4 flex items-center sm:self-center mt-4 xs:flex-col sm:flex-col;
 }
 .stack-container {
   @apply flex 
@@ -121,6 +121,8 @@ text-white-0
 .tect-stack-container {
   @apply grid
   gap-4
+  lg:gap-6
+  xl:gap-8
   h-full
   w-full
   rounded-md

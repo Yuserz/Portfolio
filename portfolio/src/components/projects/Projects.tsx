@@ -84,7 +84,7 @@ const Projects: React.FC = () => {
   ];
 
   const container = {
-    hidden: { opacity: 1, scale: 0 },
+    hidden: { opacity: 0, scale: 0 },
     visible: {
       opacity: 1,
       scale: 1,
@@ -103,10 +103,9 @@ const Projects: React.FC = () => {
     },
   };
   const [ref, inView] = useInView({
-    triggerOnce: false,
-    rootMargin: "300px 100px",
+    triggerOnce: window.innerWidth <= 640 ? true : false,
+    rootMargin: window.innerWidth <= 640 ? "700px 100px" : "300px 100px",
   });
-
   const [animation, setAnimation] = useState("hidden");
 
   useEffect(() => {
