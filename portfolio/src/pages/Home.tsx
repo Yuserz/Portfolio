@@ -18,8 +18,8 @@ const Home: React.FC = () => {
           <Right />
         </div>
       </div>
-      <div id="section2" className="project h-fit">
-        <h3 className="section-title">Projects</h3>
+      <div id="section2" className="project h-fit ">
+        <h3 className="section-title">Project</h3>
         <Projects />
       </div>
       <div id="section3" className="stack-container">

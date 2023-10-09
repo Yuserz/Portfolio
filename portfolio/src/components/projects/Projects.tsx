@@ -104,7 +104,7 @@ const Projects: React.FC = () => {
   };
   const [ref, inView] = useInView({
     triggerOnce: window.innerWidth <= 640 ? true : false,
-    rootMargin: window.innerWidth <= 640 ? "700px 100px" : "300px 100px",
+    rootMargin: window.innerWidth <= 640 ? "700px 100px" : "500px 100px",
   });
   const [animation, setAnimation] = useState("hidden");
 

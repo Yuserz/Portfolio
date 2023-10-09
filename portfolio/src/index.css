@@ -40,13 +40,14 @@ bg-bg;
 .header {
   @apply flex w-full 
   items-center
-  h-[80px] 
+  h-[80px]
+  xs:h-fit 
+  sm:h-fit 
   xs:px-2
   sm:px-4
   md:px-10 
   lg:px-20 
   xl:px-40 
-  overflow-hidden 
   py-4 
   justify-between
   sticky
@@ -147,7 +148,9 @@ text-white-0
   @apply text-primary 
   font-bold 
   text-h3
+  xl:text-h2
   w-full 
+  mb-4
   py-4
   mt-[5%]
   md:mt-[5%]
