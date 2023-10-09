@@ -67,11 +67,16 @@ const Header: React.FC = () => {
       </ul>
 
       {!show && (
-        <div className="right-0  md:hidden lg:hidden xl:hidden top-16 absolute rounded-b-lg w-[150px] bg-opacity-70 border border-white-1 bg-bg z-20 rounded-lg p-4">
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{}}
+          className="right-0  md:hidden lg:hidden xl:hidden top-16 absolute rounded-b-lg w-[150px] bg-opacity-70 border border-white-1 bg-bg z-20 rounded-lg p-4"
+        >
           <ul className="flex flex-col cursor-pointer items-center text-left xs:gap-4 sm:gap-4 gap-4 whitespace-nowrap xs:text-[10px] sm:text-[14px] font-medium text-primary">
             {renderNavLinks()}
           </ul>
-        </div>
+        </motion.div>
       )}
 
       <button
