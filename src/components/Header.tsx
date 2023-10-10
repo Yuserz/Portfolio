@@ -66,7 +66,7 @@ const Header: React.FC = () => {
         {renderNavLinks()}
       </ul>
 
-      {!show && (
+      {show && (
         <motion.div
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
@@ -80,10 +80,10 @@ const Header: React.FC = () => {
       )}
 
       <button
-        className="flex md:hidden lg:hidden xl:hidden"
+        className="flex md:hidden lg:hidden xl:hidden p-2 rounded-full focus:scale-110 focus:shadow-dark-1 shadow"
         onClick={() => setShow((prev) => !prev)}
       >
-        <img className="w-6 h-6" src={burger} alt="Menu" />
+        <img className="w-6 h-6 " src={burger} alt="Menu" />
       </button>
     </motion.header>
   );

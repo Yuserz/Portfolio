@@ -77,13 +77,13 @@ export default function Left() {
         <motion.div className="flex gap-2 xs:mt-2 sm:mt-2">
           {socialArray.map((item) => (
             <button
+              key={item.id}
               onClick={() => {
                 const url = item.path;
                 window.open(url, "_blank");
               }}
             >
               <img
-                key={item.id}
                 className="max-w-10 max-h-10 w-full rounded-full opacity-90 hover:opacity-100 hover:scale-125 transition-all duration-300 cursor-pointer"
                 src={item.icon}
               />

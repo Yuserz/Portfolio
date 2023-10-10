@@ -26,7 +26,7 @@ bg-bg;
 }
 .home {
   @apply flex
-  flex-wrap-reverse
+  flex-wrap
   items-center
   lg:py-[20px]
   xl:py-[40px]
@@ -229,8 +229,23 @@ text-white-0
 }
 
 .project-img {
-  @apply w-full object-fill h-fit max-h-[350px] sm:w-full md:w-full rounded-md mb-2
-  bg-bg p-4 bg-opacity-40 opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300;
+  @apply w-full
+  object-fill
+  h-auto
+  max-h-[350px]
+  min-h-[100px]
+  sm:w-full
+  md:w-full
+  rounded-md
+  mb-2
+  bg-bg
+  p-4
+  bg-opacity-40
+  opacity-90
+  hover:opacity-100
+  hover:scale-105
+  transition-all
+  duration-300;
 }
 
 .tech-icon {
