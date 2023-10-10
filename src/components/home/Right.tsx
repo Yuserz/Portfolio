@@ -1,5 +1,6 @@
 import * as icons from "../../assets/images/index";
 import { motion } from "framer-motion";
+import ProgressiveImg from "../ProgressiveImg";
 
 const bounceTransition = {
   duration: 2,
@@ -13,10 +14,9 @@ const bounceTransition = {
 export default function Right() {
   return (
     <motion.div
-      initial={{ scale: 0.5, opacity: 0 }}
-      animate={{ opacity: 1, rotate: 360, scale: 1 }}
+      initial={{ scale: 0.5 }}
+      animate={{ rotate: 360, scale: 1 }}
       transition={{
-        delay: 0.8,
         type: "spring",
         stiffness: 260,
         damping: 20,
@@ -46,9 +46,9 @@ export default function Right() {
             transition={{ ...bounceTransition, delay: 1.8 }}
           />
 
-          <motion.img
-            className="w-full xs:w-full sm:w-full md:w-full"
+          <ProgressiveImg
             src={icons.profile}
+            className="w-full xs:w-full sm:w-full md:w-full"
           />
         </div>
       </div>
