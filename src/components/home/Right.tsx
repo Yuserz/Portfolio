@@ -14,9 +14,10 @@ const bounceTransition = {
 export default function Right() {
   return (
     <motion.div
-      initial={{ scale: 0.5 }}
+      initial={{ scale: 0 }}
       animate={{ rotate: 360, scale: 1 }}
       transition={{
+        delay: 0.8,
         type: "spring",
         stiffness: 260,
         damping: 20,
