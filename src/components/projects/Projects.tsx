@@ -72,9 +72,7 @@ const Projects: React.FC = () => {
       image: images.chakra,
       icons: {
         0: icons.react2,
-        1: icons.node2,
-        2: icons.firebase2,
-        3: icons.less2,
+        1: icons.less2,
       },
       icon2: icons.arrow,
       caption:
