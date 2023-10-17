@@ -46,7 +46,7 @@ export default function Left() {
         Hi, I’m YUSRI,
       </motion.h1>
       <motion.h2 className="title" variants={item}>
-        FullStack Developer
+        Software Developer
       </motion.h2>
 
       <motion.p className="caption" variants={item}>
