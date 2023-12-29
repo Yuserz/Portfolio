@@ -23,6 +23,19 @@ interface Project {
 const Projects: React.FC = () => {
   const myArray: Project[] = [
     {
+      id: 0,
+      name: "Car Rental App",
+      image: images.carRental,
+      icons: {
+        0: icons.react2,
+        1: icons.firebase2,
+        2: icons.expo,
+      },
+      icon2: icons.arrow,
+      caption: "An app that enable users to post and rent a vehicle.  ",
+      link: "https://github.com/r2gcapstone/car_rental_mobile",
+    },
+    {
       id: 1,
       name: "Fingernail Disease Classifier",
       image: images.nail,
@@ -53,19 +66,19 @@ const Projects: React.FC = () => {
       link: "https://github.com/Yuserz/LingoLink",
     },
 
-    {
-      id: 3,
-      name: "Ripeness Detection",
-      image: images.banana,
-      icons: {
-        0: icons.react2,
-        1: icons.tensor,
-      },
-      icon2: icons.arrow,
-      caption:
-        "A react native mobile app which classifies the ripeness of a banana using neural network.",
-      link: "https://github.com/Yuserz/banana-ripeness",
-    },
+    // {
+    //   id: 3,
+    //   name: "Ripeness Detection",
+    //   image: images.banana,
+    //   icons: {
+    //     0: icons.react2,
+    //     1: icons.tensor,
+    //   },
+    //   icon2: icons.arrow,
+    //   caption:
+    //     "A react native mobile app which classifies the ripeness of a banana using neural network.",
+    //   link: "https://github.com/Yuserz/banana-ripeness",
+    // },
     {
       id: 4,
       name: "Chakra",
@@ -102,7 +115,7 @@ const Projects: React.FC = () => {
   };
   const [ref, inView] = useInView({
     triggerOnce: window.innerWidth <= 640 ? true : false,
-    rootMargin: window.innerWidth <= 640 ? "700px 100px" : "500px 100px",
+    rootMargin: window.innerWidth <= 640 ? "700px 100px" : "700px 100px",
   });
   const [animation, setAnimation] = useState("hidden");
 
