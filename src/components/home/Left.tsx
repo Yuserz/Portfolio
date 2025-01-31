@@ -45,23 +45,15 @@ export default function Left() {
       <motion.h1 className="my-name whitespace-nowrap" variants={item}>
         Hi, I’m YUSRI,
       </motion.h1>
-      <motion.h2 className="title" variants={item}>
-        Software Developer
+      <motion.h2 className="title whitespace-nowrap" variants={item}>
+        Full-Stack Developer
       </motion.h2>
 
       <motion.p className="caption" variants={item}>
-        I’m passionate about coding and problem-solving. My experience spans
-        across a diverse tech stack and my eagerness to learn and adopt new
-        technologies is ceaseless. I strive to create seamless user experiences
-        with robust backend functionality.
+        I’m a passionate developer who loves to create software solutions that
+        solve real-world problems.
       </motion.p>
 
-      <motion.p className="caption" variants={item}>
-        Feel free to explore my portfolio to see the projects I’ve worked on.
-      </motion.p>
-      <motion.p className="caption font-semibold" variants={item}>
-        Let’s code the future together!
-      </motion.p>
       <motion.div className="contact-container " variants={item}>
         <button
           className="contact-btn whitespace-nowrap"
