@@ -35,7 +35,7 @@ const Footer = () => {
         ))}
       </div>
       <div className="text text-caption text-dark-2">
-        © 2023 Yusri Caloyloy | All rights reserved
+        © 2023-2025 | Yusri Caloyloy | All rights reserved
       </div>
     </footer>
   );
