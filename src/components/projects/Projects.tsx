@@ -24,6 +24,20 @@ const Projects: React.FC = () => {
   const myArray: Project[] = [
     {
       id: 0,
+      name: "Caritas",
+      image: images.caritas,
+      icons: {
+        0: icons.next,
+        1: icons.typescript2,
+        2: icons.firebase2,
+        3: icons.tailwind2,
+      },
+      icon2: icons.arrow,
+      caption: "A web app for charity organization using firebase.",
+      link: "https://github.com/Caritas-200/caritas.git",
+    },
+    {
+      id: 0,
       name: "Car Rental App",
       image: images.carRental,
       icons: {
@@ -32,11 +46,24 @@ const Projects: React.FC = () => {
         2: icons.expo,
       },
       icon2: icons.arrow,
-      caption: "An app that enable users to post and rent a vehicle.  ",
+      caption: "A mobile app for car rental service using firebase.",
       link: "https://github.com/r2gcapstone/car_rental_mobile",
     },
     {
       id: 1,
+      name: "Ripeness Detection",
+      image: images.banana,
+      icons: {
+        0: icons.react2,
+        1: icons.tensor,
+      },
+      icon2: icons.arrow,
+      caption:
+        "A web app that detects the ripeness of a banana using a machine learning model.",
+      link: "https://github.com/Yuserz/banana-ripeness",
+    },
+    {
+      id: 2,
       name: "Fingernail Disease Classifier",
       image: images.nail,
       icons: {
@@ -47,11 +74,11 @@ const Projects: React.FC = () => {
       },
       icon2: icons.arrow,
       caption:
-        "A college thesis which detects an early stage of systemic disease using image classification.",
+        "A web app that classifies fingernail diseases using a machine learning model.",
       link: "https://github.com/Yuserz/nail_detection",
     },
     {
-      id: 2,
+      id: 3,
       name: "LingoLink",
       image: images.lingolink,
       icons: {
@@ -62,23 +89,10 @@ const Projects: React.FC = () => {
       },
       icon2: icons.arrow,
       caption:
-        "A web real time communication app that uses socket.io and WEBRTC library.",
+        "A web app that connects language learners with native speakers.",
       link: "https://github.com/Yuserz/LingoLink",
     },
 
-    // {
-    //   id: 3,
-    //   name: "Ripeness Detection",
-    //   image: images.banana,
-    //   icons: {
-    //     0: icons.react2,
-    //     1: icons.tensor,
-    //   },
-    //   icon2: icons.arrow,
-    //   caption:
-    //     "A react native mobile app which classifies the ripeness of a banana using neural network.",
-    //   link: "https://github.com/Yuserz/banana-ripeness",
-    // },
     {
       id: 4,
       name: "Chakra",
@@ -150,7 +164,10 @@ const Projects: React.FC = () => {
                     key={key}
                     className="transition-all hover:scale-125 duration-300"
                   >
-                    <img className="tech-icon" src={item.icons[Number(key)]} />
+                    <img
+                      className="tech-icon w-full h-full bg-white-3 rounded-full"
+                      src={item.icons[Number(key)]}
+                    />
                   </div>
                 ))}
               </div>
