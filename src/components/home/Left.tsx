@@ -23,12 +23,6 @@ const socialArray = [
   { id: 1, icon: icons.github, path: "https://github.com/Yuserz" },
   {
     id: 2,
-    icon: icons.facebook,
-    path: "https://www.facebook.com/YusriNaBroke/",
-  },
-  { id: 3, icon: icons.twitter, path: "https://twitter.com/Yusri56473275" },
-  {
-    id: 4,
     icon: icons.linkedin,
     path: "https://www.linkedin.com/in/yusri-caloyloy-b19217204/",
   },

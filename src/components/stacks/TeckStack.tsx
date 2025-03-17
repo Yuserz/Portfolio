@@ -49,29 +49,36 @@ const TechStack: React.FC = () => {
 
   return (
     <motion.div
-      className="tect-stack-container"
+      className="grid gap-4 lg:gap-6 xl:gap-8 h-full w-full rounded-md xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xs:h-auto xs:overflow-y-auto xs:p-4 sm:h-auto sm:overflow-y-auto sm:p-4"
       variants={container}
       initial="hidden"
       animate={animation}
       ref={ref}
     >
       {options.map((option: Option, index) => (
-        <motion.div key={index} className="card" variants={items}>
-          <div className="card-content">
+        <motion.div
+          key={index}
+          className="flex flex-col items-center justify-center w-full gap-2 bg-[#A5A6F6] bg-opacity-10 p-4 lg:px-6 xl:px-8 md:py-4 lg:py-6 xl:py-8 border overflow-clip rounded-md hover:scale-105 transition-all duration-200 shadow-lg"
+          variants={items}
+        >
+          <div className="flex flex-row gap-4 w-full justify-between">
             {loading ? (
-              <div className="skeleton-loader">
-                <div className="skeleton-image"></div>
-                <div className="skeleton-text"></div>
-                <div className="skeleton-caption"></div>
+              <div className="flex flex-col items-center justify-center w-full h-full">
+                <div className="bg-gray-300 rounded-md my-2 w-full h-[200px]"></div>
+                <div className="bg-gray-300 rounded-md my-2 w-3/4 h-4"></div>
+                <div className="bg-gray-300 rounded-md my-2 w-1/2 h-3"></div>
               </div>
             ) : (
               <>
-                <img className="card-image p-1" src={option.icon} />
+                <img
+                  className="w-20 h-20 object-fill rounded-md p-1"
+                  src={option.icon}
+                />
                 <div className="self-start">
-                  <h3 className="stack-title text-h4 font-medium text-white-2">
+                  <h3 className="text-h4 font-medium text-white-2 truncate">
                     {option.title}
                   </h3>
-                  <div className="text-caption1 xl:text-caption2 text-dark-2 op">
+                  <div className="text-caption1 xl:text-caption2 text-dark-2 op max-h-[3em] overflow-hidden text-ellipsis ">
                     {option.caption}
                   </div>
                 </div>
