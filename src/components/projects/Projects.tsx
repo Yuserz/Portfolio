@@ -49,35 +49,43 @@ const Projects: React.FC = () => {
 
   return (
     <motion.div
-      className="project-container"
+      className="grid gap-4 xl:gap-8 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3"
       variants={container}
       initial="hidden"
       animate={animation}
     >
       {ProjectList.map((item) => (
-        <motion.div key={item.id} className="project-card" variants={items}>
+        <motion.div
+          key={item.id}
+          className="bg-[#A5A6F6] bg-opacity-10 flex flex-col gap-2 p-4 md:p-6 lg:p-6 xl:p-6 rounded-lg flex-wrap min-w-fit shadow-lg"
+          variants={items}
+        >
           {loading ? (
-            <div className="skeleton-loader">
-              <div className="skeleton-image"></div>
-              <div className="skeleton-text"></div>
-              <div className="skeleton-caption"></div>
+            <div className="flex flex-col items-center justify-center w-full h-full">
+              <div className="bg-gray-300 rounded-md my-2 w-full h-[200px]"></div>
+              <div className="bg-gray-300 rounded-md my-2 w-3/4 h-4"></div>
+              <div className="bg-gray-300 rounded-md my-2 w-1/2 h-3"></div>
             </div>
           ) : (
             <>
-              <img src={item.image} className="project-img" ref={ref} />
-              <div className="project-right w-full gap-4 xl:gap-4 flex flex-col justify-start">
-                <label className="flex text-h4 font-[700] text-white-2 xl:text-[25px] truncate">
+              <img
+                src={item.image}
+                className="w-full shadow-md border h-auto object-cover rounded-md mb-2"
+                ref={ref}
+              />
+              <div className="flex flex-col w-full gap-4 xl:gap-4 justify-start">
+                <label className="text-h4 font-[700] text-white-2 xl:text-[25px] truncate">
                   {item.name}
                 </label>
                 <div className="flex flex-row justify-between">
-                  <div className="icon-container flex flex-row flex-wrap gap-2">
+                  <div className="flex flex-row flex-wrap gap-2">
                     {Object.keys(item.icons).map((key: string) => (
                       <div
                         key={key}
                         className="transition-all hover:scale-125 duration-300"
                       >
                         <img
-                          className="tech-icon w-full h-full bg-white-3 rounded-full"
+                          className="w-10 h-10 bg-white-3 rounded-full"
                           src={item.icons[Number(key)]}
                         />
                       </div>
@@ -91,7 +99,7 @@ const Projects: React.FC = () => {
                     <img src={item.icon2} />
                   </Link>
                 </div>
-                <div className="flex text-caption text-dark-2 mt-2 lg:text-h4 text-caption1 xl:text-caption2 description">
+                <div className="text-caption text-dark-2 mt-2 lg:text-h4 text-caption1 xl:text-caption2 max-h-[3em] overflow-hidden text-ellipsis">
                   {item.caption}
                 </div>
               </div>
