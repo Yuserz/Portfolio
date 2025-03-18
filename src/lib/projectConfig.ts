@@ -40,10 +40,11 @@ export const ProjectList: Project[] = [
     icons: {
       0: icons.react2,
       1: icons.tensor,
+      2: icons.expo,
     },
     icon2: icons.arrow,
     caption:
-      "A web app that detects the ripeness of a banana using a machine learning model.",
+      "A mobile app that detects the ripeness of a banana using a machine learning model.",
     link: "https://github.com/Yuserz/banana-ripeness",
   },
   {
