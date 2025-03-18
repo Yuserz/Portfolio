@@ -68,11 +68,14 @@ const Projects: React.FC = () => {
             </div>
           ) : (
             <>
-              <img
-                src={item.image}
-                className="w-full shadow-md border h-auto object-cover rounded-md mb-2"
-                ref={ref}
-              />
+              <div className="flex flex-col justify-center items-center w-full h-auto bg-dark-2/20 p-2 rounded-md">
+                <img
+                  src={item.image}
+                  className="w-full h-auto object-cover "
+                  ref={ref}
+                />
+              </div>
+
               <div className="flex flex-col w-full gap-4 xl:gap-4 justify-start">
                 <label className="text-h4 font-[700] text-white-2 xl:text-[25px] truncate">
                   {item.name}
