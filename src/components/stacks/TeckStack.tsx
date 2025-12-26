@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -72,7 +74,7 @@ const TechStack: React.FC = () => {
               <>
                 <img
                   className="w-20 h-20 object-fill rounded-md p-1"
-                  src={option.icon}
+                  src={typeof option.icon === 'string' ? option.icon : option.icon.src}
                 />
                 <div className="self-start">
                   <h3 className="text-h4 font-medium text-white-2 truncate">
