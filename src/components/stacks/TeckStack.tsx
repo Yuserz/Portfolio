@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
@@ -72,10 +73,16 @@ const TechStack: React.FC = () => {
               </div>
             ) : (
               <>
-                <img
-                  className="w-20 h-20 object-fill rounded-md p-1"
-                  src={typeof option.icon === 'string' ? option.icon : option.icon.src}
-                />
+                <div className="w-20 h-20 rounded-md p-1 flex-shrink-0">
+                  <Image
+                    src={typeof option.icon === 'string' ? option.icon : option.icon.src}
+                    alt={option.title}
+                    width={80}
+                    height={80}
+                    style={{ width: '100%', height: '100%', objectFit: 'fill' }}
+                    unoptimized={typeof option.icon === 'string'}
+                  />
+                </div>
                 <div className="self-start">
                   <h3 className="text-h4 font-medium text-white-2 truncate">
                     {option.title}
