@@ -1,7 +1,9 @@
+'use client';
+
 import React, { useState } from "react";
 import { Link as LinkScroll } from "react-scroll";
+import Image from "next/image";
 import icon from "../assets/icons/download.svg";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import burger from "../assets/icons/burger.svg";
 
@@ -53,14 +55,15 @@ const Header: React.FC = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 1, type: "tween", stiffness: 100 }}
     >
-      <Link
-        to="https://drive.google.com/file/d/1PDQRAw8B_8ZKf5N7DPXgqFNuy4FSDNVE/view?usp=drive_LinkScroll"
+      <a
+        href="https://drive.google.com/file/d/1PDQRAw8B_8ZKf5N7DPXgqFNuy4FSDNVE/view?usp=sharing"
         download
         target="_blank"
+        rel="noopener noreferrer"
         className="resume-btn whitespace-nowrap w-fit"
       >
-        Resume <img src={icon} alt="Resume" />
-      </Link>
+        Resume <Image src={icon} alt="Resume" width={24} height={24} />
+      </a>
 
       <ul className="flex xs:hidden sm:hidden cursor-pointer items-center xs:gap-2 sm:gap-2 gap-4 whitespace-nowrap xs:text-[10px] sm:text-[14px] font-medium text-primary">
         {renderNavLinks()}
@@ -83,7 +86,7 @@ const Header: React.FC = () => {
         className="flex md:hidden lg:hidden xl:hidden p-2 rounded-full focus:scale-110 focus:shadow-dark-1 shadow"
         onClick={() => setShow((prev) => !prev)}
       >
-        <img className="w-6 h-6 " src={burger} alt="Menu" />
+        <Image className="w-6 h-6" src={burger} alt="Menu" width={24} height={24} />
       </button>
     </motion.header>
   );

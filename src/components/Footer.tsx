@@ -1,3 +1,6 @@
+'use client';
+
+import Image from "next/image";
 import * as icons from "../assets/icons";
 
 const socialArray = [
@@ -22,9 +25,12 @@ const Footer = () => {
               window.open(url, "_blank");
             }}
           >
-            <img
-              className="max-w-10 max-h-10 w-full rounded-full opacity-90 hover:opacity-100 hover:scale-125 transition-all duration-300 cursor-pointer"
+            <Image
+              className="rounded-full opacity-90 hover:opacity-100 hover:scale-125 transition-all duration-300 cursor-pointer"
               src={item.icon}
+              alt="Social media icon"
+              width={40}
+              height={40}
             />
           </button>
         ))}

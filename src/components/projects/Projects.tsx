@@ -1,5 +1,7 @@
+'use client';
+
 import React from "react";
-import { Link } from "react-router-dom";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
@@ -26,9 +28,10 @@ const Projects: React.FC = () => {
     },
   };
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 640;
   const [ref, inView] = useInView({
-    triggerOnce: window.innerWidth <= 640 ? true : false,
-    rootMargin: window.innerWidth <= 640 ? "700px 100px" : "700px 100px",
+    triggerOnce: isMobile ? true : false,
+    rootMargin: isMobile ? "700px 100px" : "700px 100px",
   });
 
   const [animation, setAnimation] = useState("hidden");
@@ -57,52 +60,63 @@ const Projects: React.FC = () => {
       {ProjectList.map((item) => (
         <motion.div
           key={item.id}
-          className="bg-[#A5A6F6] bg-opacity-10 flex flex-col gap-2 p-4 md:p-6 lg:p-6 xl:p-6 rounded-lg flex-wrap min-w-fit shadow-lg"
+          className="bg-[#A5A6F6] bg-opacity-10 flex flex-col gap-2 p-4 md:p-6 lg:p-6 xl:p-6 rounded-lg shadow-lg h-full"
           variants={items}
         >
           {loading ? (
-            <div className="flex flex-col items-center justify-center w-full h-full">
-              <div className="bg-gray-300 rounded-md my-2 w-full h-[200px]"></div>
-              <div className="bg-gray-300 rounded-md my-2 w-3/4 h-4"></div>
-              <div className="bg-gray-300 rounded-md my-2 w-1/2 h-3"></div>
+            <div className="flex flex-col items-center justify-center w-full gap-2">
+              <div className="bg-gray-300 rounded-md w-full h-[160px] sm:h-[160px] md:h-[180px] lg:h-[200px] xl:h-[220px]"></div>
+              <div className="bg-gray-300 rounded-md w-3/4 h-4"></div>
+              <div className="bg-gray-300 rounded-md w-1/2 h-3"></div>
             </div>
           ) : (
             <>
-              <div className="flex flex-col justify-center items-center w-full h-auto bg-dark-2/20 p-2 rounded-md">
-                <img
-                  src={item.image}
-                  className="w-full h-auto object-cover "
+              <div className="flex flex-col justify-center items-center w-full h-[160px] sm:h-[160px] md:h-[180px] lg:h-[200px] xl:h-[220px] bg-dark-2/20 p-2 rounded-md overflow-hidden">
+                <Image
+                  src={typeof item.image === 'string' ? item.image : item.image.src}
+                  className="w-full h-full object-cover rounded-md"
+                  alt={item.name}
+                  width={500}
+                  height={220}
                   ref={ref}
                 />
               </div>
 
-              <div className="flex flex-col w-full gap-4 xl:gap-4 justify-start">
+              <div className="flex flex-col w-full gap-4 xl:gap-4 justify-start flex-grow">
                 <label className="text-h4 font-[700] text-white-2 xl:text-[25px] truncate">
                   {item.name}
                 </label>
                 <div className="flex flex-row justify-between">
                   <div className="flex flex-row flex-wrap gap-2">
-                    {Object.keys(item.icons).map((key: string) => (
-                      <div
-                        key={key}
-                        className="transition-all hover:scale-125 duration-300"
-                      >
-                        <img
-                          className="w-10 h-10 bg-white-3 rounded-full"
-                          src={item.icons[Number(key)]}
-                        />
-                      </div>
-                    ))}
+                    {Object.keys(item.icons).map((key: string) => {
+                      const iconData = item.icons[Number(key)];
+                      const iconSrc = typeof iconData === 'string' ? iconData : iconData.src;
+                      return (
+                        <div
+                          key={key}
+                          className="transition-all hover:scale-125 duration-300"
+                        >
+                          <Image
+                            className="w-10 h-10 bg-white-3 rounded-full"
+                            src={iconSrc}
+                            alt="Technology icon"
+                            width={40}
+                            height={40}
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
-                  <Link
-                    to={item.link}
+                  <a
+                    href={item.link}
                     target="_blank"
-                    className="w-[40px] h-[40px] pl-1 flex justify-center items-center bg-primary rounded-full text-white-0"
+                    rel="noopener noreferrer"
+                    className="w-[40px] h-[40px] pl-1 flex justify-center items-center bg-primary rounded-full text-white-0 flex-shrink-0"
                   >
-                    <img src={item.icon2} />
-                  </Link>
+                    <Image src={typeof item.icon2 === 'string' ? item.icon2 : item.icon2.src} alt="Project link" width={14} height={14} />
+                  </a>
                 </div>
-                <div className="text-caption text-dark-2 mt-2 lg:text-h4 text-caption1 xl:text-caption2 max-h-[3em] overflow-hidden text-ellipsis">
+                <div className="text-caption text-dark-2 mt-auto lg:text-h4 text-caption1 xl:text-caption2 line-clamp-3">
                   {item.caption}
                 </div>
               </div>

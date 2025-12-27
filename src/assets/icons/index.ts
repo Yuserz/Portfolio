@@ -32,3 +32,6 @@ export { default as express } from "../icons/express.svg";
 export { default as typescript } from "../icons/typescript.png";
 export { default as typescript2 } from "../icons/typescript2.png";
 export { default as chakra } from "../icons/chakra.svg";
+
+export { default as supabase } from "../icons/supabase.png";
+export { default as shadcn } from "../icons/shadcn.png";

@@ -9,3 +9,4 @@ export { default as p2 } from "../images/p2.svg";
 export { default as p3 } from "../images/p3.svg";
 
 export { default as caritas } from "../images/caritas.svg";
+export { default as harvesthub } from "../images/harvesthub.png";
