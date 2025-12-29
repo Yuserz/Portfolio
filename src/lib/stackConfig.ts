@@ -120,4 +120,24 @@ export const options: Option[] = [
       "An open-source, cross-platform, back-end JavaScript runtime environment.",
     experienceLevel: 3,
   },
+
+  // Database & Backend Services
+  {
+    id: 17,
+    title: "Supabase",
+    icon: icons.supabase,
+    caption:
+      "An open-source Firebase alternative providing real-time databases, authentication, and serverless functions.",
+    experienceLevel: 2,
+  },
+
+  // UI Components
+  {
+    id: 18,
+    title: "shadcn/ui",
+    icon: icons.shadcn,
+    caption:
+      "A collection of beautifully designed, unstyled, accessible components built with Radix UI and Tailwind CSS.",
+    experienceLevel: 2,
+  },
 ];

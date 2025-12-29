@@ -58,7 +58,7 @@ const TechStack: React.FC = () => {
       animate={animation}
       ref={ref}
     >
-      {options.map((option: Option, index) => (
+      {options.slice().reverse().map((option: Option, index) => (
         <motion.div
           key={index}
           className="flex flex-col items-center justify-center w-full gap-2 bg-[#A5A6F6] bg-opacity-10 p-4 lg:px-6 xl:px-8 md:py-4 lg:py-6 xl:py-8 border overflow-clip rounded-md hover:scale-105 transition-all duration-200 shadow-lg"

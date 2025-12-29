@@ -10,3 +10,4 @@ export { default as p3 } from "../images/p3.svg";
 
 export { default as caritas } from "../images/caritas.svg";
 export { default as harvesthub } from "../images/harvesthub.png";
+export { default as urgarden } from "../images/urgarden.svg";
