@@ -66,17 +66,17 @@ export const ProjectList: Project[] = [
   },
   {
     id: 4,
-    name: "LingoLink",
-    image: images.lingolink,
+    name: "Urgarden",
+    image: images.urgarden,
     icons: {
       0: icons.react2,
-      1: icons.node2,
-      3: icons.mongodb2,
-      4: icons.tailwind2,
+      1: icons.supabase,
+      2: icons.expo,
+      3: icons.tailwind2,
     },
     icon2: icons.arrow,
-    caption: "A web app that connects language learners with native speakers.",
-    link: "https://github.com/Yuserz/LingoLink",
+    caption: "A mobile app that helps users manage and monitor their gardens effectively.",
+    link: "https://github.com/urgarden/urgarden",
   },
 
   {
