@@ -1,90 +1,75 @@
-import { Project } from "./definitions";
-//icon
 import * as icons from "../assets/icons";
-
-//images
 import * as images from "../assets/images";
 
-export const ProjectList: Project[] = [
+export interface Project {
+  id: number;
+  name: string;
+  image: string;
+  /** Ordered tech-stack badge icons. */
+  icons: string[];
+  /** Corner "open project" arrow icon. */
+  icon2: string;
+  caption: string;
+  link: string;
+}
+
+/**
+ * The project cards. `icons` is the ordered tech-stack badge row; `icon2` is
+ * the corner "open" arrow. Add a project by appending an entry with a unique id.
+ */
+export const PROJECTS: Project[] = [
   {
     id: 0,
     name: "Caritas",
     image: images.caritas,
-    icons: {
-      0: icons.next,
-      1: icons.typescript2,
-      2: icons.firebase2,
-      3: icons.tailwind2,
-    },
+    icons: [icons.next, icons.typescript2, icons.firebase2, icons.tailwind2],
     icon2: icons.arrow,
     caption: "A web app for charity organization using firebase.",
     link: "https://github.com/Caritas-200/caritas.git",
   },
   {
-    id: 0,
+    id: 1,
     name: "Car Rental App",
     image: images.carRental,
-    icons: {
-      0: icons.react2,
-      1: icons.firebase2,
-      2: icons.expo,
-    },
+    icons: [icons.react2, icons.firebase2, icons.expo],
     icon2: icons.arrow,
     caption: "A mobile app for car rental service using firebase.",
     link: "https://github.com/r2gcapstone/car_rental_mobile",
   },
   {
-    id: 1,
+    id: 2,
     name: "Ripeness Detection",
     image: images.banana,
-    icons: {
-      0: icons.react2,
-      1: icons.tensor,
-      2: icons.expo,
-    },
+    icons: [icons.react2, icons.tensor, icons.expo],
     icon2: icons.arrow,
     caption:
       "A mobile app that detects the ripeness of a banana using a machine learning model.",
     link: "https://github.com/Yuserz/banana-ripeness",
   },
   {
-    id: 2,
+    id: 3,
     name: "Disease Classifier",
     image: images.nail,
-    icons: {
-      0: icons.react2,
-      1: icons.flask,
-      2: icons.python,
-      3: icons.sass,
-    },
+    icons: [icons.react2, icons.flask, icons.python, icons.sass],
     icon2: icons.arrow,
     caption:
       "A web app that classifies fingernail diseases using a machine learning model.",
     link: "https://github.com/Yuserz/nail_detection",
   },
   {
-    id: 3,
+    id: 4,
     name: "LingoLink",
     image: images.lingolink,
-    icons: {
-      0: icons.react2,
-      1: icons.node2,
-      3: icons.mongodb2,
-      4: icons.tailwind2,
-    },
+    icons: [icons.react2, icons.node2, icons.mongodb2, icons.tailwind2],
     icon2: icons.arrow,
     caption: "A web app that connects language learners with native speakers.",
     link: "https://github.com/Yuserz/LingoLink",
   },
-
   {
-    id: 4,
+    id: 5,
     name: "Chakra",
     image: images.chakra,
-    icons: {
-      0: icons.react2,
-      1: icons.less2,
-    },
+    icons: [icons.react2, icons.less2],
     icon2: icons.arrow,
     caption:
       "Chakra is a Dashboard frontend project I convert from Figma design to a semi responsive frontend code.",

@@ -7,11 +7,18 @@
   padding: 0;
   border: 0;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-bg text-white-1;
+  overflow-x: hidden;
+}
+
 .layout {
-  @apply w-full
-  h-auto
-/* bg-white-0 */
-bg-bg;
+  @apply relative w-full h-auto;
 }
 .section-container {
   @apply w-full
@@ -48,12 +55,15 @@ bg-bg;
   md:px-10 
   lg:px-20 
   xl:px-40 
-  py-4 
+  py-4
   justify-between
   sticky
   top-0
-  bg-bg
   z-30;
+  background: rgba(30, 22, 45, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .home-sub-containers {
@@ -114,34 +124,9 @@ text-white-0
   @apply gap-4 flex items-center sm:self-center mt-4 xs:flex-col sm:flex-col;
 }
 .stack-container {
-  @apply flex 
-  flex-col 
+  @apply flex
+  flex-col
   w-full;
-}
-
-.tect-stack-container {
-  @apply grid
-  gap-4
-  lg:gap-6
-  xl:gap-8
-  h-full
-  w-full
-  rounded-md
-  grid-cols-3
-  xs:grid-cols-1
-  sm:grid-cols-1
-  md:grid-cols-2
-  lg:grid-cols-3
-  xs:h-[400px]
-  xs:overflow-y-auto
-  xs:p-4
-  sm:h-[400px]
-  sm:overflow-y-auto
-  sm:p-4;
-}
-
-.teck-stack {
-  @apply w-full md:self-start;
 }
 
 .section-title {
@@ -158,110 +143,165 @@ text-white-0
   xl:mt-[5%];
 }
 
-.card {
-  @apply flex
-  flex-row
-  w-full
-  gap-2
-  bg-[#A5A6F6] 
-  bg-opacity-10
-  p-4
-  lg:px-6
-  xl:px-8
-  md:py-4
-  lg:py-6
-  xl:py-8
-  border
-  overflow-clip
-  rounded-md
-  hover:scale-105
-  transition-all
-  duration-200
-  items-start;
-  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
+/* ---------- Animated aurora backdrop ---------- */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
-.card-content {
-  @apply flex 
-  flex-row  
-  gap-4
-  w-full 
-  xs:justify-start 
-  sm:justify-start 
-  justify-between 
-  
-  /* overflow-clip; */;
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.5;
+  will-change: transform;
 }
 
-.card-image {
-  @apply xs:w-[70px]
-  sm:w-[80px]
-  md:w-[80px]
-  lg:w-[100px]
-  xl:w-[100px]  
-  h-fit;
+.aurora-blob--1 {
+  width: 45vw;
+  height: 45vw;
+  top: -10%;
+  left: -5%;
+  background: radial-gradient(circle at center, #5d5fef, transparent 70%);
+  animation: drift1 22s ease-in-out infinite;
 }
 
-.project-container {
-  @apply grid
-  grid-cols-4
-  xs:grid-cols-1
-  sm:grid-cols-1
-  md:grid-cols-2
-  lg:grid-cols-3
-  xl:grid-cols-3
-  gap-4
-  xl:gap-8;
+.aurora-blob--2 {
+  width: 40vw;
+  height: 40vw;
+  top: 30%;
+  right: -10%;
+  background: radial-gradient(circle at center, #b83eff, transparent 70%);
+  animation: drift2 26s ease-in-out infinite;
 }
 
-.project-card {
-  @apply bg-[#A5A6F6]
-  bg-opacity-10
-  flex
-  flex-col
-  gap-2
-  p-4
-  md:p-6
-  lg:p-6
-  xl:p-6
-  rounded-lg
-  flex-wrap
-  min-w-fit;
-  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
+.aurora-blob--3 {
+  width: 38vw;
+  height: 38vw;
+  bottom: -12%;
+  left: 25%;
+  background: radial-gradient(circle at center, #3effd1, transparent 70%);
+  opacity: 0.32;
+  animation: drift3 30s ease-in-out infinite;
 }
 
-.project-img {
-  @apply w-full
-  object-fill
-  h-auto
-  max-h-[350px]
-  min-h-[100px]
-  sm:w-full
-  md:w-full
-  rounded-md
-  mb-2
-  bg-bg
-  p-4
-  bg-opacity-40
-  opacity-90
-  hover:opacity-100
-  hover:scale-105
-  transition-all
-  duration-300;
+.aurora-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    #000 30%,
+    transparent 75%
+  );
 }
 
-.tech-icon {
-  @apply shadow
-  rounded-full
-  overflow-clip
-  min-w-[30px]
-  max-w-[40px]
-  h-auto;
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(8vw, 6vh) scale(1.15); }
+}
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-7vw, 8vh) scale(1.1); }
+}
+@keyframes drift3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5vw, -7vh) scale(1.18); }
 }
 
-.footer-icon {
-  @apply cursor-pointer
-  hover:scale-110
-  transition-all
-  duration-200;
+/* ---------- Glass cards with cursor-tracking glow ---------- */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.glass-card {
+  position: relative;
+  border-radius: 16px;
+  background: linear-gradient(
+    145deg,
+    rgba(165, 166, 246, 0.08),
+    rgba(165, 166, 246, 0.03)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(93, 95, 239, 0.55);
+  box-shadow: 0 12px 50px rgba(93, 95, 239, 0.25);
+}
+
+/* radial glow that follows the cursor via --mx/--my from TiltCard */
+.card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(93, 95, 239, 0.22),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.glass-card:hover .card-glow {
+  opacity: 1;
+}
+
+/* ---------- Image shimmer skeleton ---------- */
+.shimmer {
+  background: linear-gradient(
+    100deg,
+    rgba(165, 166, 246, 0.06) 30%,
+    rgba(165, 166, 246, 0.16) 50%,
+    rgba(165, 166, 246, 0.06) 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}
+
+/* ---------- Cursor spotlight ---------- */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 380px;
+  height: 380px;
+  margin: -190px 0 0 -190px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(93, 95, 239, 0.12),
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 5;
+  will-change: transform;
+}
+
+/* ---------- Respect reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .aurora-blob,
+  .shimmer { animation: none !important; }
 }

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link as LinkScroll } from "react-scroll";
 import icon from "../assets/icons/download.svg";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import burger from "../assets/icons/burger.svg";
+import { NAV_LINKS, PROFILE } from "../constants";
 
 const Header: React.FC = () => {
   const [active, setActive] = useState<string>("section1");
@@ -13,14 +13,8 @@ const Header: React.FC = () => {
     setActive(section);
   };
 
-  const navLinks = [
-    { section: "section1", text: "Home" },
-    { section: "section2", text: "Project" },
-    { section: "section3", text: "Tech Stack" },
-  ];
-
   const renderNavLinks = () => {
-    return navLinks.map((link) => (
+    return NAV_LINKS.map((link) => (
       <li
         key={link.section}
         className={`flex ${
@@ -53,14 +47,14 @@ const Header: React.FC = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 1, type: "tween", stiffness: 100 }}
     >
-      <Link
-        to="https://drive.google.com/file/d/1PDQRAw8B_8ZKf5N7DPXgqFNuy4FSDNVE/view?usp=drive_LinkScroll"
-        download
+      <a
+        href={PROFILE.resumeUrl}
         target="_blank"
+        rel="noreferrer"
         className="resume-btn whitespace-nowrap w-fit"
       >
-        Resume <img src={icon} alt="Resume" />
-      </Link>
+        Resume <img src={icon} alt="" aria-hidden="true" />
+      </a>
 
       <ul className="flex xs:hidden sm:hidden cursor-pointer items-center xs:gap-2 sm:gap-2 gap-4 whitespace-nowrap xs:text-[10px] sm:text-[14px] font-medium text-primary">
         {renderNavLinks()}
