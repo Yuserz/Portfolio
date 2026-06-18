@@ -1,11 +1,9 @@
-'use client';
-
 import React, { useState } from "react";
 import { Link as LinkScroll } from "react-scroll";
-import Image from "next/image";
 import icon from "../assets/icons/download.svg";
 import { motion } from "framer-motion";
 import burger from "../assets/icons/burger.svg";
+import { NAV_LINKS, PROFILE } from "../constants";
 
 const Header: React.FC = () => {
   const [active, setActive] = useState<string>("section1");
@@ -15,14 +13,8 @@ const Header: React.FC = () => {
     setActive(section);
   };
 
-  const navLinks = [
-    { section: "section1", text: "Home" },
-    { section: "section2", text: "Project" },
-    { section: "section3", text: "Tech Stack" },
-  ];
-
   const renderNavLinks = () => {
-    return navLinks.map((link) => (
+    return NAV_LINKS.map((link) => (
       <li
         key={link.section}
         className={`flex ${
@@ -56,13 +48,12 @@ const Header: React.FC = () => {
       transition={{ delay: 1, type: "tween", stiffness: 100 }}
     >
       <a
-        href="https://drive.google.com/file/d/1PDQRAw8B_8ZKf5N7DPXgqFNuy4FSDNVE/view?usp=sharing"
-        download
+        href={PROFILE.resumeUrl}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noreferrer"
         className="resume-btn whitespace-nowrap w-fit"
       >
-        Resume <Image src={icon} alt="Resume" width={24} height={24} />
+        Resume <img src={icon} alt="" aria-hidden="true" />
       </a>
 
       <ul className="flex xs:hidden sm:hidden cursor-pointer items-center xs:gap-2 sm:gap-2 gap-4 whitespace-nowrap xs:text-[10px] sm:text-[14px] font-medium text-primary">
@@ -86,7 +77,7 @@ const Header: React.FC = () => {
         className="flex md:hidden lg:hidden xl:hidden p-2 rounded-full focus:scale-110 focus:shadow-dark-1 shadow"
         onClick={() => setShow((prev) => !prev)}
       >
-        <Image className="w-6 h-6" src={burger} alt="Menu" width={24} height={24} />
+        <img className="w-6 h-6 " src={burger} alt="Menu" />
       </button>
     </motion.header>
   );

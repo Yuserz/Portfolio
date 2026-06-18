@@ -1,43 +1,11 @@
-'use client';
-
-import Image from "next/image";
-import * as icons from "../assets/icons";
-
-const socialArray = [
-  { id: 1, icon: icons.github, path: "https://github.com/Yuserz" },
-
-  {
-    id: 2,
-    icon: icons.linkedin,
-    path: "https://www.linkedin.com/in/yusri-caloyloy-b19217204/",
-  },
-];
+import { PROFILE } from "../constants";
+import SocialLinks from "./ui/SocialLinks";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col gap-4  mt-10 w-full h-[130px] bg-bg items-center justify-center">
-      <div className="flex flex-row gap-2 ">
-        {socialArray.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => {
-              const url = item.path;
-              window.open(url, "_blank");
-            }}
-          >
-            <Image
-              className="rounded-full opacity-90 hover:opacity-100 hover:scale-125 transition-all duration-300 cursor-pointer"
-              src={item.icon}
-              alt="Social media icon"
-              width={40}
-              height={40}
-            />
-          </button>
-        ))}
-      </div>
-      <div className="text text-caption text-dark-2">
-        © 2023-2025 | Yusri Caloyloy | All rights reserved
-      </div>
+    <footer className="relative z-10 flex flex-col gap-4 mt-10 w-full h-[130px] items-center justify-center">
+      <SocialLinks />
+      <div className="text text-caption text-dark-2">{PROFILE.copyright}</div>
     </footer>
   );
 };
