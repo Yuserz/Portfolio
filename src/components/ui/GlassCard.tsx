@@ -14,8 +14,8 @@ interface GlassCardProps {
 
 /**
  * The shared card chrome: a reveal-animated wrapper + 3D tilt + the
- * cursor-tracking glow overlay. ProjectCard and TechCard supply only their
- * distinct inner content.
+ * cursor-tracking glow overlay. ProjectCard supplies only its distinct inner
+ * content.
  */
 const GlassCard: React.FC<GlassCardProps> = ({
   children,
@@ -23,7 +23,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
   intensity,
   className = "",
 }) => (
-  <motion.div variants={variants}>
+  <motion.div variants={variants} className="h-full">
     <TiltCard intensity={intensity} className={`glass-card group ${className}`}>
       <div className="card-glow" aria-hidden="true" />
       {children}
