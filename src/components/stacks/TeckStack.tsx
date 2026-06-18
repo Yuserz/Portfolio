@@ -1,28 +1,39 @@
 import * as React from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { TECH_STACK, staggerContainer } from "../../constants";
-import TechCard from "./TechCard";
+import { TECH_STACK } from "../../constants";
 
-const TechStack: React.FC = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    rootMargin: "0px 0px -100px 0px",
-  });
+/** One logo pill in the marquee. */
+const Pill: React.FC<{ title: string; icon: string }> = ({ title, icon }) => (
+  <div className="glass-card group mr-4 flex shrink-0 items-center gap-3 px-5 py-3">
+    <img
+      src={icon}
+      alt=""
+      loading="lazy"
+      decoding="async"
+      className="h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
+    />
+    <span className="whitespace-nowrap text-h4 font-medium text-white-2">
+      {title}
+    </span>
+  </div>
+);
 
-  return (
-    <motion.div
-      ref={ref}
-      className="grid h-full w-full gap-4 rounded-md xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 lg:gap-6 xl:gap-8"
-      variants={staggerContainer(0.06)}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-    >
-      {TECH_STACK.map((option) => (
-        <TechCard key={option.id} option={option} />
+/**
+ * A single-row, infinitely looping marquee of tech logos. The list is rendered
+ * twice (the second copy aria-hidden) so the track can scroll a seamless -50%.
+ * Pauses on hover; respects prefers-reduced-motion (see index.css).
+ */
+const TechStack: React.FC = () => (
+  <div className="marquee-wrapper relative w-full overflow-hidden py-2">
+    <div className="marquee">
+      {[0, 1].map((copy) => (
+        <div key={copy} className="flex shrink-0" aria-hidden={copy === 1}>
+          {TECH_STACK.map((option) => (
+            <Pill key={`${copy}-${option.id}`} title={option.title} icon={option.icon} />
+          ))}
+        </div>
       ))}
-    </motion.div>
-  );
-};
+    </div>
+  </div>
+);
 
 export default TechStack;

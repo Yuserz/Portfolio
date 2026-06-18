@@ -12,7 +12,7 @@ export const PROFILE = {
   email: "yusri.cs200@gmail.com",
   resumeUrl:
     "https://drive.google.com/file/d/1PDQRAw8B_8ZKf5N7DPXgqFNuy4FSDNVE/view?usp=drive_link",
-  copyright: "© 2023-2025 | Yusri Caloyloy | All rights reserved",
+  copyright: "© 2023-2026 | Yusri Caloyloy | All rights reserved",
 } as const;
 
 /** Build a Gmail "compose" deep-link for a given address. */

@@ -12,6 +12,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---------- Section scroll-snapping ----------
+   On larger screens, gently snap each section under the sticky header so it
+   lands cleanly in view. `proximity` (not `mandatory`) keeps tall sections
+   (Projects) and the footer fully reachable. */
+@media (min-width: 901px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+}
+
+#section1,
+#section2,
+#section3 {
+  scroll-snap-align: start;
+  scroll-margin-top: 90px;
+}
+
 body {
   @apply bg-bg text-white-1;
   overflow-x: hidden;
@@ -29,7 +46,8 @@ body {
   sm:px-4
   md:px-10
   lg:px-20
-  xl:px-40;
+  xl:px-40
+  pb-24;
 }
 .home {
   @apply flex
@@ -83,17 +101,13 @@ body {
 }
 
 .resume-btn {
-  @apply flex 
+  @apply flex
   items-center
-  shadow
   gap-2
   pl-6
   xs:pl-2
   sm:pl-4
   p-2
-  bg-gradient-to-r
-  from-primary
-  to-[#b83effc2]
   text-white-0
   px-4
   rounded-3xl
@@ -103,21 +117,86 @@ body {
 .contact-btn {
   @apply flex
   items-center
-  shadow
   gap-2
   pl-6
   p-3
-  bg-gradient-to-r
-from-primary
-to-[#b83eff82]
-text-white-0
-  px-2 rounded-xl
+  text-white-0
+  px-4 rounded-xl
   text-btn
   lg:text-h3
-  xl:text-h3
-  hover:scale-110
-  transition-all
-  duration-200;
+  xl:text-h3;
+}
+
+/* ---------- Animated gradient buttons ---------- */
+.btn-gradient,
+.resume-btn,
+.contact-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-image: linear-gradient(
+    110deg,
+    #5d5fef 0%,
+    #7c5cf0 30%,
+    #b83eff 62%,
+    #5d5fef 100%
+  );
+  background-size: 220% 100%;
+  background-position: 0% 0;
+  box-shadow: 0 4px 16px rgba(93, 95, 239, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transition: background-position 0.6s ease, box-shadow 0.35s ease,
+    transform 0.18s ease;
+}
+
+/* sheen that sweeps across on hover (sits above gradient, below text) */
+.btn-gradient::before,
+.resume-btn::before,
+.contact-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(
+    100deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 75%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.7s ease;
+}
+
+.btn-gradient:hover,
+.resume-btn:hover,
+.contact-btn:hover {
+  background-position: 100% 0;
+  box-shadow: 0 8px 28px rgba(184, 62, 255, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-gradient:hover::before,
+.resume-btn:hover::before,
+.contact-btn:hover::before {
+  transform: translateX(130%);
+}
+
+/* resume-btn is a plain anchor, so transform-based lift is safe here.
+   contact-btn lives inside MagneticButton, which owns its transform. */
+.btn-gradient:hover,
+.resume-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+.btn-gradient:active,
+.resume-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ---------- Active nav pill ---------- */
+.nav-active {
+  background-image: linear-gradient(120deg, #5d5fef, #b83eff);
+  box-shadow: 0 4px 18px rgba(93, 95, 239, 0.5);
 }
 
 .contact-container {
@@ -130,17 +209,16 @@ text-white-0
 }
 
 .section-title {
-  @apply text-primary 
-  font-bold 
+  @apply text-primary
+  font-bold
   text-h3
   xl:text-h2
-  w-full 
-  mb-4
-  py-4
-  mt-[5%]
-  md:mt-[5%]
-  lg:mt-[5%] 
-  xl:mt-[5%];
+  w-full
+  mt-20
+  md:mt-24
+  xl:mt-28
+  mb-6
+  md:mb-8;
 }
 
 /* ---------- Animated aurora backdrop ---------- */
@@ -264,6 +342,41 @@ text-white-0
   opacity: 1;
 }
 
+/* ---------- Tech-stack marquee ---------- */
+.marquee-wrapper {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+  will-change: transform;
+}
+
+.marquee-wrapper:hover .marquee {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* ---------- Image shimmer skeleton ---------- */
 .shimmer {
   background: linear-gradient(
@@ -303,5 +416,15 @@ text-white-0
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .aurora-blob,
+  .marquee,
   .shimmer { animation: none !important; }
+  .btn-gradient,
+  .resume-btn,
+  .contact-btn { transition: box-shadow 0.3s ease; }
+  .btn-gradient:hover,
+  .resume-btn:hover,
+  .contact-btn:hover { transform: none; }
+  .btn-gradient::before,
+  .resume-btn::before,
+  .contact-btn::before { display: none; }
 }

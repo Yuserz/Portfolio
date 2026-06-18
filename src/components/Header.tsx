@@ -19,7 +19,7 @@ const Header: React.FC = () => {
         key={link.section}
         className={`flex ${
           active === link.section
-            ? "bg-primary text-white-0 p-2 px-4 rounded-full transition-all duration-500"
+            ? "nav-active text-white-0 p-2 px-4 rounded-full transition-all duration-500"
             : "transition-all duration-500"
         }`}
       >
@@ -74,7 +74,7 @@ const Header: React.FC = () => {
       )}
 
       <button
-        className="flex md:hidden lg:hidden xl:hidden p-2 rounded-full focus:scale-110 focus:shadow-dark-1 shadow"
+        className="flex md:hidden lg:hidden xl:hidden p-2 rounded-full border border-white-1/10 bg-white-1/5 transition-all duration-300 hover:bg-primary/20 hover:border-primary/40 focus:scale-110"
         onClick={() => setShow((prev) => !prev)}
       >
         <img className="w-6 h-6 " src={burger} alt="Menu" />

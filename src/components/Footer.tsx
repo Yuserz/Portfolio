@@ -3,9 +3,16 @@ import SocialLinks from "./ui/SocialLinks";
 
 const Footer = () => {
   return (
-    <footer className="relative z-10 flex flex-col gap-4 mt-10 w-full h-[130px] items-center justify-center">
+    <footer className="relative z-10 mt-10 flex w-full flex-col items-center justify-center gap-4 py-10">
+      {/* gradient divider */}
+      <div
+        aria-hidden="true"
+        className="h-px w-full max-w-md bg-gradient-to-r from-transparent via-primary/50 to-transparent"
+      />
       <SocialLinks />
-      <div className="text text-caption text-dark-2">{PROFILE.copyright}</div>
+      <div className="text-caption tracking-wide text-dark-2 transition-colors duration-300 hover:text-white-3">
+        {PROFILE.copyright}
+      </div>
     </footer>
   );
 };
