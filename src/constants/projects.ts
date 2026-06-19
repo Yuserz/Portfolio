@@ -1,9 +1,12 @@
 import * as icons from "../assets/icons";
 import * as images from "../assets/images";
+import { GITHUB_OVERRIDES } from "./github-overrides";
+import generatedRaw from "../generated/github-projects.json";
 
 export interface Project {
   id: number;
   name: string;
+  /** Resolved image source — bundled asset path or remote URL. */
   image: string;
   /** Ordered tech-stack badge icons. */
   icons: string[];
@@ -13,11 +16,44 @@ export interface Project {
   link: string;
 }
 
-/**
- * The project cards. `icons` is the ordered tech-stack badge row; `icon2` is
- * the corner "open" arrow. Add a project by appending an entry with a unique id.
- */
-export const PROJECTS: Project[] = [
+/** Shape written by scripts/fetch-github-projects.mjs */
+interface RawGithubProject {
+  id: number;
+  name: string;
+  caption: string;
+  imageUrl?: string;
+  iconKeys: string[];
+  link: string;
+}
+
+function resolveIconSrcs(keys: string[]): string[] {
+  const map = icons as unknown as Record<string, string>;
+  const resolved = keys.map((k) => {
+    const src = map[k];
+    if (!src) console.warn(`[projects] Unknown icon key "${k}" — check TOPIC_TO_ICON_KEY or GITHUB_OVERRIDES`);
+    return src;
+  });
+  return resolved.filter(Boolean);
+}
+
+function buildFromGithub(raw: RawGithubProject[]): Project[] {
+  return raw.map((repo) => {
+    const override = GITHUB_OVERRIDES[repo.name] ?? {};
+    const iconKeys = override.iconKeys ?? repo.iconKeys;
+    return {
+      id: repo.id,
+      name: repo.name,
+      image: repo.imageUrl ?? "",
+      icons: resolveIconSrcs(iconKeys),
+      icon2: icons.arrow,
+      caption: override.caption ?? repo.caption,
+      link: repo.link,
+    };
+  });
+}
+
+/** Hardcoded fallback used when no GITHUB_TOKEN was set at build time. */
+const STATIC_PROJECTS: Project[] = [
   {
     id: 0,
     name: "Caritas",
@@ -76,3 +112,7 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/Yuserz/Chakra-Admin",
   },
 ];
+
+export const PROJECTS: Project[] = (generatedRaw as RawGithubProject[]).length
+  ? buildFromGithub(generatedRaw as RawGithubProject[])
+  : STATIC_PROJECTS;

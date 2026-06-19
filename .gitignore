@@ -13,6 +13,13 @@ dist-ssr
 .next
 *.local
 
+# GitHub projects — generated at build time, seeded as [] for fresh clones
+# Commit src/generated/github-projects.json with [] so the import resolves
+# without a token. The fetch script overwrites it when GITHUB_TOKEN is set.
+# Do NOT gitignore that file; gitignore everything else in the directory.
+src/generated/*
+!src/generated/github-projects.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
