@@ -1,7 +1,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { SKILL_GROUPS, staggerContainer, fadeInUp } from "../../constants";
+import { SKILL_GROUPS, SECOND_BRAIN, staggerContainer, fadeInUp } from "../../constants";
 
 /**
  * `> sys_info --skills` — a 4-column terminal skills matrix.
@@ -45,6 +45,22 @@ const TechStack: React.FC = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Featured second-brain card — full width, one row */}
+        <motion.div
+          variants={fadeInUp}
+          className="mt-gutter border border-inverse-surface rounded-lg p-6 bg-primary"
+        >
+          <h4 className="font-mono text-[13px] uppercase tracking-[0.05em] text-on-primary mb-4 pb-2 border-b border-inverse-surface">
+            [{SECOND_BRAIN.label}]
+          </h4>
+          <div className="font-headline text-headline-md text-on-primary mb-2">
+            {SECOND_BRAIN.tool}
+          </div>
+          <p className="font-body text-body-md text-inverse-primary">
+            {SECOND_BRAIN.detail}
+          </p>
+        </motion.div>
       </motion.div>
     </section>
   );

@@ -27,7 +27,7 @@ const AgenticStack: React.FC = () => {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter mt-stack-md">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter mt-stack-md">
           {AGENTIC_TOOLS.map((tool) => (
             <motion.article
               key={tool.id}

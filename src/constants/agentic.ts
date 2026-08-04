@@ -40,4 +40,22 @@ export const AGENTIC_TOOLS: AgenticTool[] = [
       "Collaborative Design Systems & AI Workflows. Industry standard for visual systems.",
     command: "$ open --design-system",
   },
+  {
+    id: 3,
+    toolId: "FREEBUFF",
+    name: "FREEBUFF",
+    status: "ACTIVE",
+    capability:
+      "Free AI Coding Assistant. Chat-driven development with agentic planning and code review.",
+    command: "$ buff --plan-and-code",
+  },
+  {
+    id: 4,
+    toolId: "DEEPSEEK",
+    name: "DEEPSEEK",
+    status: "ACTIVE",
+    capability:
+      "Open-Source Reasoning Models. High-capability LLM backend for coding and agentic tasks.",
+    command: "$ deepseek --reason",
+  },
 ];

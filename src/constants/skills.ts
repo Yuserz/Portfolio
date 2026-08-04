@@ -4,7 +4,7 @@
  * Groups mirror the v2 tech stack (see git history: `constants/techStack.ts`):
  * HTML5, CSS, JavaScript, React Native, Tailwind CSS, Chakra UI, Less, Expo,
  * React, TypeScript, NextJS, Express.js, MongoDB, Firebase, NodeJS — plus the
- * retained extras: Docker, Obsidian, and the SUPERUSER group.
+ * retained extras: Docker and the SUPERPOWERS (Claude Code plugin) group.
  *
  * Current data story: Supabase is the primary cloud DB/BaaS, SQLite the
  * offline/embedded DB — both lead the BACKEND column. MongoDB/Firebase stay
@@ -54,15 +54,27 @@ export const SKILL_GROUPS: SkillGroup[] = [
     ],
   },
   {
-    // The Superpowers plugin for Claude Code (workspace skills like
-    // brainstorming, planning, and deep-dive workflows).
+    // The Superpowers plugin for Claude Code — the development workflows
+    // I lean on most (ideation through shipped, reviewed code).
     label: "SUPERPOWERS",
     items: [
-      "Advanced Shell",
-      "Automation",
-      "System Optimization",
-      "Dotfiles Management",
-      "Obsidian",
+      "Brainstorming",
+      "Planning",
+      "Debugging",
+      "Refactoring",
+      "Code Review",
+      "Testing",
     ],
   },
 ];
+
+/**
+ * Featured full-width card rendered below the skills matrix — "1 row,
+ * 1 column" entry for a tool that deserves more than a list bullet.
+ */
+export const SECOND_BRAIN = {
+  label: "SECOND_BRAIN",
+  tool: "Obsidian",
+  detail:
+    "My second brain for development — a linked knowledge base that captures architecture decisions, reusable snippets, and lessons learned. It keeps every project's context one search away, so solutions, API patterns, and gotchas never get lost — and its structured vault feeds that memory back into AI-assisted workflows.",
+} as const;
