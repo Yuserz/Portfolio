@@ -40,6 +40,7 @@ export const SKILL_GROUPS: SkillGroup[] = [
       "SQLite",
       "NodeJS",
       "Express.js",
+      "FastAPI",
       "MongoDB",
       "Firebase",
     ],
@@ -48,10 +49,14 @@ export const SKILL_GROUPS: SkillGroup[] = [
     label: "DEVOPS",
     items: [
       "Docker",
+      "GCP",
+      "GitLab CI/CD",
     ],
   },
   {
-    label: "SUPERUSER",
+    // The Superpowers plugin for Claude Code (workspace skills like
+    // brainstorming, planning, and deep-dive workflows).
+    label: "SUPERPOWERS",
     items: [
       "Advanced Shell",
       "Automation",
