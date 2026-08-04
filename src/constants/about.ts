@@ -22,19 +22,19 @@ export interface TimelineEntry {
 export const TIMELINE: TimelineEntry[] = [
   {
     tag: "EDUCATION",
-    period: "2021 — 2025",
+    period: "2018 — 2022",
     title: "B.S. Computer Science",
     body: "Built a strong foundation in algorithms, data structures, and software engineering through coursework and team-based capstone projects.",
   },
   {
-    tag: "FIRST_PROJECTS",
-    period: "2024",
-    title: "ML-powered apps",
-    body: "Shipped mobile and web apps that detect banana ripeness and classify fingernail diseases with machine learning — my first end-to-end products.",
+    tag: "THESIS",
+    period: "2022",
+    title: "ML disease classifier",
+    body: "Built my college thesis: a web app that classifies fingernail diseases using a CNN algorithm with OpenCV image processing — my first end-to-end ML product.",
   },
   {
     tag: "FULLSTACK",
-    period: "2025",
+    period: "2024 — NOW",
     title: "Full-stack development",
     body: "Moved into full-stack work — Next.js and React Native frontends backed by Node.js, Express, and Supabase, with SQLite for offline storage.",
   },
