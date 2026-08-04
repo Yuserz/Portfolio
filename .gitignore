@@ -13,6 +13,9 @@ dist-ssr
 .next
 *.local
 
+# Vite dev-server cache (accidentally committed in the past)
+.vite/
+
 # GitHub data — generated at build time, seeded as [] / {} for fresh clones
 # Commit src/generated/github-projects.json ([]) and github-stats.json ({})
 # so the imports resolve without a token. The fetch script overwrites them
