@@ -14,6 +14,8 @@ export interface Project {
   icon2: string;
   caption: string;
   link: string;
+  /** Terminal-style tech tags shown as mono chips. */
+  tags: string[];
 }
 
 /** Shape written by scripts/fetch-github-projects.mjs */
@@ -48,6 +50,7 @@ function buildFromGithub(raw: RawGithubProject[]): Project[] {
       icon2: icons.arrow,
       caption: override.caption ?? repo.caption,
       link: repo.link,
+      tags: override.tags ?? [],
     };
   });
 }
@@ -62,6 +65,7 @@ const STATIC_PROJECTS: Project[] = [
     icon2: icons.arrow,
     caption: "A web app for charity organization using firebase.",
     link: "https://github.com/Caritas-200/caritas.git",
+    tags: ["Next.js", "TypeScript", "Firebase", "Tailwind"],
   },
   {
     id: 1,
@@ -71,6 +75,7 @@ const STATIC_PROJECTS: Project[] = [
     icon2: icons.arrow,
     caption: "A mobile app for car rental service using firebase.",
     link: "https://github.com/r2gcapstone/car_rental_mobile",
+    tags: ["React Native", "Firebase", "Expo"],
   },
   {
     id: 2,
@@ -81,6 +86,7 @@ const STATIC_PROJECTS: Project[] = [
     caption:
       "A mobile app that detects the ripeness of a banana using a machine learning model.",
     link: "https://github.com/Yuserz/banana-ripeness",
+    tags: ["React Native", "TensorFlow", "Expo"],
   },
   {
     id: 3,
@@ -91,28 +97,21 @@ const STATIC_PROJECTS: Project[] = [
     caption:
       "A web app that classifies fingernail diseases using a machine learning model.",
     link: "https://github.com/Yuserz/nail_detection",
-  },
-  {
-    id: 4,
-    name: "LingoLink",
-    image: images.lingolink,
-    icons: [icons.react2, icons.node2, icons.mongodb2, icons.tailwind2],
-    icon2: icons.arrow,
-    caption: "A web app that connects language learners with native speakers.",
-    link: "https://github.com/Yuserz/LingoLink",
-  },
-  {
-    id: 5,
-    name: "Chakra",
-    image: images.chakra,
-    icons: [icons.react2, icons.less2],
-    icon2: icons.arrow,
-    caption:
-      "Chakra is a Dashboard frontend project I convert from Figma design to a semi responsive frontend code.",
-    link: "https://github.com/Yuserz/Chakra-Admin",
+    tags: ["React", "Flask", "Python", "Sass"],
   },
 ];
 
-export const PROJECTS: Project[] = (generatedRaw as RawGithubProject[]).length
-  ? buildFromGithub(generatedRaw as RawGithubProject[])
-  : STATIC_PROJECTS;
+/* Gallery bounds — always show between MIN_PROJECTS and MAX_PROJECTS cards.
+   Generated data is capped on the display side too, so a stale/oversized
+   github-projects.json can never blow past the limit, and a too-thin dataset
+   falls back to the curated STATIC_PROJECTS. */
+const MIN_PROJECTS = 2;
+const MAX_PROJECTS = 4;
+
+const built = buildFromGithub(generatedRaw as RawGithubProject[]).slice(
+  0,
+  MAX_PROJECTS
+);
+
+export const PROJECTS: Project[] =
+  built.length >= MIN_PROJECTS ? built : STATIC_PROJECTS;

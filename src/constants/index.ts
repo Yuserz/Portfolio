@@ -4,8 +4,11 @@
  */
 export * from "./profile";
 export * from "./hero";
+export * from "./about";
 export * from "./social";
 export * from "./navigation";
 export * from "./projects";
-export * from "./techStack";
+export * from "./agentic";
+export * from "./skills";
+export * from "./stats";
 export * from "./motion";

@@ -20,7 +20,17 @@ Node 24.x is required (pinned in `package.json` `engines` and Vercel config).
 
 ### Single-page, no router
 
-The app is one page. Navigation is section-scroll via `react-scroll`; sections have IDs `section1`, `section2`, `section3`. The Header uses `LinkScroll` (not `<Link>`) to scroll to these IDs with `offset: -70`.
+The app is one page. Navigation is section-scroll via `react-scroll`; sections have IDs `intro`, `work`, `skills`, `contact`. The Header uses `LinkScroll` with `spy` + `onSetActive` to track the active link, `offset: -70`.
+
+### v3 design — "Command Line" terminal
+
+The site is a dark, monochrome terminal aesthetic (from the Google Stitch mockup in `mockup/`):
+
+- **Palette:** pure black `bg` (#000), `inverse-primary` (#c6c6c6) body text, `inverse-surface` (#303033) borders, `primary-container` (#1b1b1b) recessed surfaces, `on-primary` (#fff) headings.
+- **Type:** triple-font strategy — **Hanken Grotesk** (`font-headline`) for headlines, **Inter** (`font-body`) for body, **Geist Mono** (`font-mono`) for all labels/meta. Google Fonts are loaded in `index.html`.
+- **Motifs:** `> ` prompt prefixes on section titles, `[BRACKETED]` metadata, mono uppercase labels, a blinking cursor block (`.cursor-block`), and hard 4px offset shadows on card hover (`.term-card`).
+- **Sections:** hero (`> SYSTEM READY.` + headline + CTAs), `> ./projects` gallery, `> agentic_stack --tools`, `> sys_info --skills` matrix, terminal footer.
+- Design tokens live in `tailwind.config.js` (custom `fontSize` tokens like `headline-xl`, `label-mono`; custom spacing `stack-lg`, `gutter`, etc.). Reusable classes are in `src/index.css` (`.term-card`, `.term-chip`, `.term-section-head`, `.btn-solid`, `.btn-ghost`, `.term-label`).
 
 ### Data layer — `src/constants/`
 
@@ -28,46 +38,40 @@ All editable site content lives here and is barrel-exported from `src/constants/
 
 | File | Exports |
 |---|---|
-| `profile.ts` | `PROFILE` (name, role, bio, email, resumeUrl), `gmailComposeUrl` |
-| `projects.ts` | `PROJECTS` (project card data + typed `Project` interface) |
-| `techStack.ts` | `TECH_STACK` |
+| `profile.ts` | `PROFILE` (name, role, bio, email, resumeUrl, copyright), `gmailComposeUrl` |
+| `projects.ts` | `PROJECTS` (typed `Project` incl. `tags` for terminal chips) |
+| `agentic.ts` | `AGENTIC_TOOLS` (the `agentic_stack --tools` cards) |
+| `skills.ts` | `SKILL_GROUPS` (the `sys_info --skills` matrix) |
 | `social.ts` | `SOCIAL_LINKS` |
 | `navigation.ts` | `NAV_LINKS` |
-| `hero.ts` | hero section copy |
-| `motion.ts` | shared Framer Motion variants (`staggerContainer`, `fadeInUp`, `fadeInLeft`, `popIn`, `heroEntrance`, `floatKeyframes`) |
+| `hero.ts` | `HERO` (hero copy) |
+| `motion.ts` | shared Framer Motion variants (`staggerContainer`, `fadeInUp`, `fadeInLeft`) |
 
 ### Layout shell — `src/layouts/MainLayout.tsx`
 
-Wraps every page. Renders in order: `AuroraBackground` (fixed behind everything) → `CursorGlow` (fixed spotlight) → sticky `Header` → `section-container` div with page content → `Footer`.
+Wraps every page: sticky/fixed `Header` → `main.section-container` (max-width 1280px, `pt-[88px]` to clear the fixed header) with page content → `Footer` (`id="contact"`).
 
-### UI primitives — `src/components/ui/`
+### Components
 
-Generic interactive building blocks that can be composed anywhere:
-
-- **`TiltCard`** — Framer Motion 3D tilt-on-hover. Caches `getBoundingClientRect` on `mouseenter` (not per `mousemove`) to avoid layout thrashing. Also sets `--mx`/`--my` CSS vars for `.card-glow` to follow the cursor.
-- **`GlassCard`** — glassmorphism container; relies on `.glass-card` + `.card-glow` CSS classes.
-- **`MagneticButton`** — owns `transform` on its child; do not add CSS `transform` hover lifts to elements inside it (this is why `.contact-btn:hover` has no `translateY` while `.resume-btn:hover` does).
-- **`OptimizedImg`** — shimmer skeleton until image loads.
-- **`AuroraBackground`** / **`CursorGlow`** — pure CSS animation components; no state.
+- **`src/components/Header.tsx`** — fixed top nav: `Yusri v3` logo, mono nav links, `Connect` mailto button, `[MENU]` mobile toggle.
+- **`src/components/home/Left.tsx` / `Right.tsx`** — hero text column + grayscale avatar box.
+- **`src/components/projects/`** — `Projects.tsx` (section header + grid), `ProjectCard.tsx` (terminal archive card: grayscale image that colorizes on hover, `v3.0.{id}` version tag, mono chips from `project.tags`).
+- **`src/components/tools/AgenticStack.tsx`** — `> agentic_stack --tools` cards.
+- **`src/components/stacks/TeckStack.tsx`** — `> sys_info --skills` matrix.
+- **`src/components/ui/OptimizedImg.tsx`** — the only remaining UI primitive: shimmer skeleton until load.
 
 ### Styling
 
-Tailwind + `src/index.css`. Custom layout utility classes (`.layout`, `.home`, `.home-sub-containers`, `.section-container`, etc.) and all animation keyframes live in `index.css` using `@apply`.
+Tailwind + `src/index.css`. All custom layout classes (`.layout`, `.section-container`) and terminal helpers (`.term-*`, `.btn-*`, `.cursor-block`) use `@apply`. `.shimmer` is used by `OptimizedImg`.
 
-**Custom breakpoints** (not standard Tailwind defaults):
-- `xs`: 0–320px, `sm`: 321–640px, `md`: 641–900px, `lg`: 901–1200px, `xl`: 1201px+
+**Custom breakpoints** (min-width, standard Tailwind semantics; note the custom pixel thresholds):
+- `sm`: 321px, `md`: 641px, `lg`: 901px, `xl`: 1201px+
 
-**Custom color tokens** (defined in `tailwind.config.js`):
-- `bg` (#1E162D) — page background
-- `primary` (#5D5FEF) — accent/brand purple
-- `white-0/1/2/3` — light text scale
-- `dark-0/1/2` — dark text scale
+**Custom color tokens** (defined in `tailwind.config.js`): `bg` (#000), `primary` (#000), `on-primary` (#fff), `inverse-primary`, `inverse-surface`, `primary-container`, `secondary-fixed`, `outline`, plus legacy `white-0/1/2/3`, `dark-0/1/2`.
 
-**Animated gradient buttons**: `.btn-gradient`, `.resume-btn`, `.contact-btn` all share the same CSS gradient-shift + sheen-sweep animation. They're defined together in `index.css`; add new animated buttons by extending that selector group.
+**Section anchors**: `#intro/#work/#skills/#contact` carry `scroll-margin-top: 90px` so native anchor jumps clear the fixed header. Note: do NOT add `scroll-snap-type` or CSS `scroll-behavior: smooth` on `html` — both fight `react-scroll`'s JS animation and cause nav links to land off-target.
 
-**Section scroll-snap**: `y proximity` snap is enabled on `lg+` screens via a `@media (min-width: 901px)` rule. `#section1/2/3` have `scroll-snap-align: start` and `scroll-margin-top: 90px`.
-
-**Reduced motion**: `@media (prefers-reduced-motion: reduce)` disables aurora blobs, marquee, shimmer, and button transitions.
+**Reduced motion**: `@media (prefers-reduced-motion: reduce)` disables shimmer, the blinking cursor, and card hover transforms.
 
 ### Assets
 

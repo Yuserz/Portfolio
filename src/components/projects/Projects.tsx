@@ -1,13 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { PROJECTS, staggerContainer } from "../../constants";
+import { PROJECTS, staggerContainer, fadeInUp } from "../../constants";
 import ProjectCard from "./ProjectCard";
 
 /**
- * Uniform, responsive project grid:
- * 1 col (mobile) → 2 (md) → 3 (lg) → 4 (xl). Every tile keeps a 4:3 ratio so
- * the image-forward cards stay equal height across breakpoints.
+ * v3 terminal gallery: `> ./projects` header + count, then a responsive
+ * 1 → 2 column grid of mono-tagged project cards.
  */
 const Projects: React.FC = () => {
   const [ref, inView] = useInView({
@@ -16,19 +15,27 @@ const Projects: React.FC = () => {
   });
 
   return (
-    <motion.div
-      ref={ref}
-      className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6"
-      variants={staggerContainer(0.1)}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-    >
-      {PROJECTS.map((project) => (
-        <div key={project.id} className="aspect-[4/3]">
-          <ProjectCard project={project} />
+    <section id="work" className="flex flex-col gap-stack-md">
+      <motion.div
+        ref={ref}
+        variants={staggerContainer(0.08)}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+      >
+        <motion.div variants={fadeInUp} className="term-section-head">
+          <h2 className="term-section-title">&gt; ./projects</h2>
+          <span className="term-section-meta">
+            {PROJECTS.length} items found
+          </span>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter mt-stack-md">
+          {PROJECTS.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </div>
-      ))}
-    </motion.div>
+      </motion.div>
+    </section>
   );
 };
 

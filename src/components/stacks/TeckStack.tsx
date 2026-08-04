@@ -1,39 +1,53 @@
 import * as React from "react";
-import { TECH_STACK } from "../../constants";
-
-/** One logo pill in the marquee. */
-const Pill: React.FC<{ title: string; icon: string }> = ({ title, icon }) => (
-  <div className="glass-card group mr-4 flex shrink-0 items-center gap-3 px-5 py-3">
-    <img
-      src={icon}
-      alt=""
-      loading="lazy"
-      decoding="async"
-      className="h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
-    />
-    <span className="whitespace-nowrap text-h4 font-medium text-white-2">
-      {title}
-    </span>
-  </div>
-);
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { SKILL_GROUPS, staggerContainer, fadeInUp } from "../../constants";
 
 /**
- * A single-row, infinitely looping marquee of tech logos. The list is rendered
- * twice (the second copy aria-hidden) so the track can scroll a seamless -50%.
- * Pauses on hover; respects prefers-reduced-motion (see index.css).
+ * `> sys_info --skills` — a 4-column terminal skills matrix.
  */
-const TechStack: React.FC = () => (
-  <div className="marquee-wrapper relative w-full overflow-hidden py-2">
-    <div className="marquee">
-      {[0, 1].map((copy) => (
-        <div key={copy} className="flex shrink-0" aria-hidden={copy === 1}>
-          {TECH_STACK.map((option) => (
-            <Pill key={`${copy}-${option.id}`} title={option.title} icon={option.icon} />
+const TechStack: React.FC = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: "0px 0px -120px 0px",
+  });
+
+  return (
+    <section id="skills" className="flex flex-col gap-stack-md">
+      <motion.div
+        ref={ref}
+        variants={staggerContainer(0.1)}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+      >
+        <div className="term-section-head">
+          <h2 className="term-section-title">&gt; sys_info --skills</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mt-stack-md">
+          {SKILL_GROUPS.map((group) => (
+            <motion.div
+              key={group.label}
+              variants={fadeInUp}
+              className="border border-inverse-surface rounded-lg p-6 bg-primary"
+            >
+              <h4 className="font-mono text-[13px] uppercase tracking-[0.05em] text-on-primary mb-4 pb-2 border-b border-inverse-surface">
+                [{group.label}]
+              </h4>
+              <ul className="space-y-2 font-body text-body-md text-inverse-primary">
+                {group.items.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="text-on-primary-container">-</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           ))}
         </div>
-      ))}
-    </div>
-  </div>
-);
+      </motion.div>
+    </section>
+  );
+};
 
 export default TechStack;

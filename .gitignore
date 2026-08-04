@@ -13,12 +13,24 @@ dist-ssr
 .next
 *.local
 
-# GitHub projects — generated at build time, seeded as [] for fresh clones
-# Commit src/generated/github-projects.json with [] so the import resolves
-# without a token. The fetch script overwrites it when GITHUB_TOKEN is set.
-# Do NOT gitignore that file; gitignore everything else in the directory.
+# GitHub data — generated at build time, seeded as [] / {} for fresh clones
+# Commit src/generated/github-projects.json ([]) and github-stats.json ({})
+# so the imports resolve without a token. The fetch script overwrites them
+# when GITHUB_TOKEN is set. Do NOT gitignore those files; gitignore
+# everything else in the directory.
 src/generated/*
 !src/generated/github-projects.json
+!src/generated/github-stats.json
+
+# Freebuff tool state (local database + preview logs) — never ship
+.freebuff/
+
+# Stitch mockup reference (local design source, not part of the site)
+mockup/
+
+# Raw avatar sources — only the optimized profile.webp is used by the site
+public/pp.png
+public/ppnb.png
 
 # Editor directories and files
 .vscode/*

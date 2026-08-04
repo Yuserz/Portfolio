@@ -31,4 +31,3 @@ export { default as next } from "../icons/next.svg";
 export { default as express } from "../icons/express.svg";
 export { default as typescript } from "../icons/typescript.png";
 export { default as typescript2 } from "../icons/typescript2.png";
-export { default as chakra } from "../icons/chakra.svg";

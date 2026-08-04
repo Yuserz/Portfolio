@@ -3,29 +3,37 @@ import MainLayout from "../layouts/MainLayout";
 import Left from "../components/home/Left";
 import Right from "../components/home/Right";
 import TechStack from "../components/stacks/TeckStack";
-
-//icon
+import StatsSummary from "../components/stacks/StatsSummary";
+import ContactSection from "../components/contact/ContactSection";
+import AboutHistory from "../components/about/AboutHistory";
 import Projects from "../components/projects/Projects";
+import AgenticStack from "../components/tools/AgenticStack";
 
 const Home: React.FC = () => {
   return (
     <MainLayout>
-      <div id="section1" className="home ">
-        <div className="left home-sub-containers gap-4 z-10 ">
-          <Left />
-        </div>
-        <div className="right home-sub-containers">
-          <Right />
-        </div>
-      </div>
-      <div id="section3" className="stack-container">
-        <h3 className="section-title">Tech Stack</h3>
-        <TechStack />
-      </div>
-      <div id="section2" className="project h-fit ">
-        <h3 className="section-title">Project</h3>
-        <Projects />
-      </div>
+      <section
+        id="intro"
+        className="flex flex-col md:flex-row items-center gap-gutter min-h-[60vh] mt-stack-md scroll-mt-[90px]"
+      >
+        <Left />
+        <Right />
+      </section>
+
+      {/* Divider */}
+      <hr className="border-t border-inverse-surface w-full" />
+
+      <AboutHistory />
+
+      <Projects />
+
+      <AgenticStack />
+
+      <TechStack />
+
+      <StatsSummary />
+
+      <ContactSection />
     </MainLayout>
   );
 };

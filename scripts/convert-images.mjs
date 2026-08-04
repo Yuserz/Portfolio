@@ -10,10 +10,8 @@ const targets = [
   { name: "profile", maxWidth: 900 },
   { name: "banana", maxWidth: 800 },
   { name: "carRental", maxWidth: 800 },
-  { name: "chakra", maxWidth: 800 },
   { name: "nail", maxWidth: 800 },
   { name: "caritas", maxWidth: 800 },
-  { name: "lingolink", maxWidth: 800 },
 ];
 
 const kb = (bytes) => (bytes / 1024).toFixed(0) + " KB";
