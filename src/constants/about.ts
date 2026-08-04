@@ -33,6 +33,12 @@ export const TIMELINE: TimelineEntry[] = [
     body: "My first introduction to machine learning and computer vision — a team-built college thesis: a web app that classifies fingernail diseases using a CNN algorithm with OpenCV image processing.",
   },
   {
+    tag: "EXPERIENCE",
+    period: "2023",
+    title: "Associate Cloud Engineer · SentiAI",
+    body: "First industry role — helped build a healthcare chatbot for mental-health check-ins: FastAPI services deployed on GCP, shipped through GitLab CI/CD.",
+  },
+  {
     tag: "FULLSTACK",
     period: "2024 — NOW",
     title: "Full-stack development",
