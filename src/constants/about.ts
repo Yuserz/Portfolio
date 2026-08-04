@@ -30,7 +30,7 @@ export const TIMELINE: TimelineEntry[] = [
     tag: "THESIS",
     period: "2022",
     title: "ML disease classifier",
-    body: "Built my college thesis: a web app that classifies fingernail diseases using a CNN algorithm with OpenCV image processing — my first end-to-end ML product.",
+    body: "My first introduction to machine learning and computer vision — a team-built college thesis: a web app that classifies fingernail diseases using a CNN algorithm with OpenCV image processing.",
   },
   {
     tag: "FULLSTACK",
