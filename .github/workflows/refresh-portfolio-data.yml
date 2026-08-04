@@ -1,0 +1,50 @@
+# Nightly refresh of src/generated/*.json
+#
+# Runs scripts/fetch-github-projects.mjs (pinned repos + stats) on a schedule
+# and commits any changes to main. Because Vercel redeploys on pushes to main,
+# this keeps the portfolio's project cards and stats current between deploys.
+#
+# No extra secrets required: the built-in GITHUB_TOKEN can read public repos.
+# Optional: set a repo variable GITHUB_USERNAME if the account ever changes
+# (defaults to Yuserz).
+name: Refresh GitHub portfolio data
+
+on:
+  schedule:
+    # Daily at 02:00 UTC
+    - cron: "0 2 * * *"
+  workflow_dispatch: # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Fetch pinned repos + stats
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ${{ vars.GITHUB_USERNAME || 'Yuserz' }}
+        run: node scripts/fetch-github-projects.mjs
+
+      - name: Commit fresh data (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/generated/github-projects.json src/generated/github-stats.json
+          if git diff --cached --quiet; then
+            echo "No changes — data is up to date."
+          else
+            git commit -m "chore: refresh GitHub portfolio data [skip ci]"
+            git push origin HEAD:main
+            echo "Committed and pushed fresh portfolio data."
+          fi
