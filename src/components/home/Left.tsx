@@ -1,86 +1,58 @@
-'use client';
-
 import { motion } from "framer-motion";
-import Image from "next/image";
-import icon from "../../assets/icons/arrow.svg";
-//icon
-import * as icons from "../../assets/icons";
-
-const item = {
-  hidden: { x: -100, opacity: 0 },
-  show: { x: 0, opacity: 1 },
-};
-
-const socialArray = [
-  { id: 1, icon: icons.github, path: "https://github.com/Yuserz" },
-  {
-    id: 2,
-    icon: icons.linkedin,
-    path: "https://www.linkedin.com/in/yusri-caloyloy-b19217204/",
-  },
-];
+import { Link as LinkScroll } from "react-scroll";
+import { HERO, PROFILE, staggerContainer, fadeInLeft } from "../../constants";
 
 export default function Left() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        delayChildren: typeof window !== 'undefined' && window.innerWidth <= 640 ? 1.5 : 0,
-        staggerChildren: 0.1,
-      },
-    },
-  };
   return (
     <motion.div
-      className="flex flex-col w-fit gap-4"
-      variants={container}
+      className="flex-1 flex flex-col gap-stack-sm"
+      variants={staggerContainer(0.12, 0.2)}
       initial="hidden"
-      animate="show"
+      animate="visible"
     >
-      <motion.h1 className="my-name whitespace-nowrap" variants={item}>
-        Hi, I’m YUSRI,
-      </motion.h1>
-      <motion.h2 className="title whitespace-nowrap" variants={item}>
-        Full-Stack Developer
-      </motion.h2>
-
-      <motion.p className="caption" variants={item}>
-        I’m a passionate developer who loves to create software solutions that
-        solve real-world problems.
+      <motion.p variants={fadeInLeft} className="term-prompt flex items-center gap-2">
+        <span>
+          {HERO.prompt} <span className="cursor-block" aria-hidden="true" />
+        </span>
+        <span className="text-on-primary font-mono text-[12px]">{HERO.version}</span>
       </motion.p>
 
-      <motion.div className="contact-container " variants={item}>
-        <button
-          className="contact-btn whitespace-nowrap"
-          onClick={() => {
-            const email = "yusri.cs200@gmail.com";
-            const url = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${email}&tf=1`;
-            window.open(url, "_blank");
-          }}
-        >
-          Get in touch <Image className="w-8 h-4 mt-[2px]" src={icon} alt="arrow icon" width={32} height={16} />
-        </button>
+      <motion.h1
+        variants={fadeInLeft}
+        className="font-headline text-headline-lg-mobile lg:text-headline-xl text-on-primary leading-[1.15]"
+      >
+        {HERO.headline.map((line) => (
+          <span key={line} className="block">
+            {line}
+          </span>
+        ))}
+      </motion.h1>
 
-        <motion.div className="flex gap-2 xs:mt-2 sm:mt-2">
-          {socialArray.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => {
-                const url = item.path;
-                window.open(url, "_blank");
-              }}
-            >
-              <Image
-                className="max-w-10 max-h-10 w-full rounded-full opacity-90 hover:opacity-100 hover:scale-125 transition-all duration-300 cursor-pointer"
-                src={item.icon}
-                alt="social media icon"
-                width={40}
-                height={40}
-              />
-            </button>
-          ))}
-        </motion.div>
+      <motion.p
+        variants={fadeInLeft}
+        className="font-body text-body-lg max-w-2xl text-inverse-primary"
+      >
+        {HERO.body}
+      </motion.p>
+
+      <motion.div variants={fadeInLeft} className="flex gap-4 pt-4 flex-wrap">
+        <LinkScroll
+          to="work"
+          smooth={true}
+          offset={-70}
+          duration={500}
+          className="btn-solid cursor-pointer"
+        >
+          {HERO.ctaWork}
+        </LinkScroll>
+        <a
+          href={PROFILE.resumeUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="btn-ghost"
+        >
+          {HERO.ctaResume}
+        </a>
       </motion.div>
     </motion.div>
   );
