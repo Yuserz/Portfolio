@@ -3,7 +3,7 @@
     "id": 0,
     "name": "car_rental_mobile",
     "caption": "",
-    "imageUrl": "https://opengraph.githubassets.com/d705db5a0fe2ca1c1d048cb3a9158703d148345ee2b3002434dfcb0ed31305de/r2gcapstone/car_rental_mobile",
+    "imageUrl": "https://opengraph.githubassets.com/0b3e2f845d3d6f955d6cf61bf4ae48c8a96fb6353f6676fd3353a88bfcb5b265/r2gcapstone/car_rental_mobile",
     "iconKeys": [
       "js"
     ],
@@ -11,32 +11,32 @@
   },
   {
     "id": 1,
-    "name": "nail_detection",
-    "caption": "",
-    "imageUrl": "https://opengraph.githubassets.com/ee9f5e3a43f1679bb3b312d88d547cc0b3ae873ed74b0ed9f1112d4f913a59bf/Yuserz/nail_detection",
-    "iconKeys": [
-      "js"
-    ],
-    "link": "https://github.com/Yuserz/nail_detection"
-  },
-  {
-    "id": 2,
-    "name": "car_rental_web",
-    "caption": "",
-    "imageUrl": "https://opengraph.githubassets.com/e12eb7d9aac0e38e3b999368f548ec4904bb39697e1bee8174e46db4bac97be3/r2gcapstone/car_rental_web",
-    "iconKeys": [
-      "js"
-    ],
-    "link": "https://github.com/r2gcapstone/car_rental_web"
-  },
-  {
-    "id": 3,
     "name": "harvestHub",
     "caption": "",
-    "imageUrl": "https://opengraph.githubassets.com/8f65727fe3ea4376d3fab1573a4d77308eaf4051e282c93b453175cf8577eab3/HarvestHubIloilo/harvestHub",
+    "imageUrl": "https://opengraph.githubassets.com/79fa0ca4cc1ad07a95180d65d8332de3308935389c233f1034fff3d33e4827c6/HarvestHubIloilo/harvestHub",
     "iconKeys": [
       "typescript2"
     ],
     "link": "https://github.com/HarvestHubIloilo/harvestHub"
+  },
+  {
+    "id": 2,
+    "name": "Argibot",
+    "caption": "",
+    "imageUrl": "https://opengraph.githubassets.com/c946a8bddfd2179426b1ded89ccfd2c51c17df0c048cbb08e672f93923baa50b/Yuserz/Argibot",
+    "iconKeys": [
+      "typescript2"
+    ],
+    "link": "https://github.com/Yuserz/Argibot"
+  },
+  {
+    "id": 3,
+    "name": "Ripeness-classifier",
+    "caption": "",
+    "imageUrl": "https://opengraph.githubassets.com/0bd41ce44660d6c69cebd52575674e43df09fd24f9dffe24be0aabfddde6a139/Yuserz/Ripeness-classifier",
+    "iconKeys": [
+      "js"
+    ],
+    "link": "https://github.com/Yuserz/Ripeness-classifier"
   }
 ]
