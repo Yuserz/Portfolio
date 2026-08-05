@@ -34,7 +34,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
         )}
         <span className="absolute top-2 left-2 bg-primary px-2 py-1 font-mono text-[11px] uppercase tracking-[0.05em] text-inverse-primary border border-inverse-surface">
-          v3.0.{project.id}
+          [PROJECT_#{project.id}]
         </span>
       </div>
 
