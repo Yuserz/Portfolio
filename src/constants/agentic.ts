@@ -62,9 +62,9 @@ export const AGENTIC_TOOLS: AgenticTool[] = [
     id: 5,
     toolId: "CODEX",
     name: "CODEX",
-    status: "PENDING",
+    status: "ACTIVE",
     capability:
-      "OpenAI's CLI Coding Agent. Terminal-native agentic coding with sandboxed execution — currently on trial.",
-    command: "$ codex --trial",
+      "OpenAI's CLI Coding Agent. Terminal-native agentic coding with sandboxed execution.",
+    command: "$ codex --run",
   },
 ];

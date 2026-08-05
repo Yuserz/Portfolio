@@ -23,10 +23,9 @@ const AgenticStack: React.FC = () => {
         <div className="term-section-head">
           <h2 className="term-section-title">&gt; agentic_stack --tools</h2>
           <span className="term-section-meta">
-            {AGENTIC_TOOLS.filter((t) => t.status === "ACTIVE").length}{" "}
-            active ·{" "}
-            {AGENTIC_TOOLS.filter((t) => t.status !== "ACTIVE").length}{" "}
-            pending
+            {AGENTIC_TOOLS.filter((t) => t.status !== "ACTIVE").length === 0
+              ? `${AGENTIC_TOOLS.length} tools active`
+              : `${AGENTIC_TOOLS.filter((t) => t.status === "ACTIVE").length} active · ${AGENTIC_TOOLS.filter((t) => t.status !== "ACTIVE").length} pending`}
           </span>
         </div>
 
@@ -41,7 +40,13 @@ const AgenticStack: React.FC = () => {
                 <span className="font-mono text-[12px] uppercase tracking-[0.05em] text-on-primary-container">
                   [TOOL_ID: {tool.toolId}]
                 </span>
-                <span className="font-mono text-[12px] uppercase tracking-[0.05em] text-on-primary">
+                <span
+                  className={`font-mono text-[12px] uppercase tracking-[0.05em] ${
+                    tool.status === "ACTIVE"
+                      ? "text-on-primary"
+                      : "text-warning"
+                  }`}
+                >
                   [STATUS: {tool.status}]
                 </span>
               </div>
