@@ -23,7 +23,10 @@ const AgenticStack: React.FC = () => {
         <div className="term-section-head">
           <h2 className="term-section-title">&gt; agentic_stack --tools</h2>
           <span className="term-section-meta">
-            {AGENTIC_TOOLS.length} tools active
+            {AGENTIC_TOOLS.filter((t) => t.status === "ACTIVE").length}{" "}
+            active ·{" "}
+            {AGENTIC_TOOLS.filter((t) => t.status !== "ACTIVE").length}{" "}
+            pending
           </span>
         </div>
 

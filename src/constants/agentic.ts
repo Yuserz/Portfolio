@@ -58,4 +58,13 @@ export const AGENTIC_TOOLS: AgenticTool[] = [
       "Open-Source Reasoning Models. High-capability LLM backend for coding and agentic tasks.",
     command: "$ deepseek --reason",
   },
+  {
+    id: 5,
+    toolId: "CODEX",
+    name: "CODEX",
+    status: "PENDING",
+    capability:
+      "OpenAI's CLI Coding Agent. Terminal-native agentic coding with sandboxed execution — currently on trial.",
+    command: "$ codex --trial",
+  },
 ];
