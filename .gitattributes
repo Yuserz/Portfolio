@@ -1,0 +1,8 @@
+# Normalize all text files to LF, both in the repo and on checkout.
+# Prevents CRLF working-tree churn from showing up as whole-file diffs.
+* text=auto eol=lf
+
+# Windows-only scripts keep CRLF when they exist.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
